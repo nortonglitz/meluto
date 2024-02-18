@@ -13,8 +13,8 @@ export const Topbar = () => {
                 px-20
             "
         >
-            <Link href="/">
-                <Logo className="h-7"/>
+            <Link href="/auth/login">
+                <Logo className="h-7" />
             </Link>
             <div className="flex space-x-4 items-center">
                 <Button link >
