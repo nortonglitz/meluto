@@ -1,20 +1,21 @@
-type LogoProps = {
-    extended?: boolean
+import { DetailedHTMLProps, ImgHTMLAttributes } from "react"
+
+interface LogoProps extends DetailedHTMLProps<ImgHTMLAttributes<HTMLImageElement>, HTMLImageElement> {
+    small?: boolean
 }
 
 export const Logo = ({
-    extended = false
+    small = false,
+    ...props
 }: LogoProps) => {
 
-    if (!extended) {
+    if (small) {
         return (
-            <img src="/images/logos/logo192.webp" alt="meluto" className="h-10" />
+            <img src="/images/logos/logo-small.webp" alt="meluto" {...props}/>
         )
     }
 
     return (
-        <div>
-            Logo
-        </div>
+        <img src="/images/logos/logo.webp" alt="meluto" {...props}/>
     )
 }
