@@ -1,26 +1,60 @@
-import { DetailedHTMLProps, InputHTMLAttributes } from "react"
+import { DetailedHTMLProps, InputHTMLAttributes, forwardRef } from "react"
 
-interface InputTextProps extends DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement> { }
-
-export const InputText = ({
-    className,
-    ...props
-}: InputTextProps) => {
-    return (
-        <input
-            type="text"
-            autoFocus
-            className={`
-                border
-                bg-gray-100
-                border-gray-500
-                rounded-3xl
-                py-2
-                px-4
-
-                ${className}
-            `}
-            {...props}
-        />
-    )
+interface InputTextProps extends DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement> {
+    error?: string
+    inputClassName?: string
+    className?: string
 }
+
+// fordwardRef first type is the main element and then the component type
+// also use ref on the main element, don't forget it's the second param
+
+export const InputText = forwardRef<HTMLInputElement, InputTextProps>(({
+    className,
+    inputClassName,
+    error,
+    ...props
+}, ref) => {
+
+    const hasError = !!error
+
+    return (
+        <div className={className}>
+            <input
+                ref={ref}
+                type="text"
+                autoFocus
+                className={`
+                    border
+                    bg-gray-100
+                    border-gray-500
+                    rounded-3xl
+                    py-2
+                    px-4
+
+                    disabled:opacity-80
+                    disabled:cursor-not-allowed
+
+                    ${hasError ? "border-red-500" : ""}
+                    ${hasError ? "outline-red-500" : ""}
+
+                    ${inputClassName}
+                `}
+                {...props}
+            />
+            {hasError && (
+                <p
+                    className="
+                        text-sm
+                        mx-4
+                        text-red-500
+                    "
+                >
+                    {error}
+                </p>
+            )}
+        </div>
+    )
+})
+
+InputText.displayName = "InputText"
