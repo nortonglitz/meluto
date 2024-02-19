@@ -46,7 +46,7 @@ export const UserMenu = ({
                         "
                     >
                         <li>
-                            <Link href="/entrar">Entrar</Link>
+                            <Link href="/auth/login">Entrar</Link>
                         </li>
                     </ul>
                 </div>
