@@ -1,9 +1,20 @@
-import Image from "next/image"
+"use client"
 
-export const SocialMediaButton = () => {
+import Image from "next/image"
+import { ButtonHTMLAttributes, DetailedHTMLProps } from "react"
+
+interface SocialMediaButtonProps extends DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> {
+    loading?: boolean
+}
+
+export const SocialMediaButton = ({
+    className,
+    ...props
+}: SocialMediaButtonProps) => {
+
     return (
         <button
-            className="
+            className={`
                 transition
                 flex
                 w-full
@@ -17,7 +28,13 @@ export const SocialMediaButton = () => {
                 text-scooter-950
 
                 hover:bg-gray-100
-            "
+
+                disabled:cursor-not-allowed
+                disabled:opacity-50
+                
+                ${className}
+            `}
+            {...props}
         >
             <Image
                 src="/icons/google.svg"
