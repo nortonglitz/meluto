@@ -5,8 +5,8 @@ import { Logo } from "@/components"
 const LoginPage = () => {
 
     return (
-        <div className="flex justify-center flex-grow items-center">
-            <div className="max-w-[20vw] animate-fade-in relative">
+        <div className="flex justify-center flex-grow items-center h-[100vh]">
+            <div className="animate-fade-in relative w-[80%] sm:w-[50%] md:w-[70%] xl:w-[60%]">
                 <div className="absolute -top-[30%] flex justify-center">
                     <Logo className="w-[60%]" />
                 </div>

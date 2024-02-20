@@ -7,10 +7,16 @@ export default function AuthLayout({
 }>) {
     return (
         <main className="flex">
-            <div className="relative">
+            <div className="relative hidden md:block">
                 <Image
+                    className="
+                        h-[100vh]
+                        w-[70vw]
+                        object-cover
+                        border-r-2
+                        border-scooter-500
+                    "
                     src="/images/backgrounds/auth.jpg"
-                    className="h-[100vh] w-[60vw] object-cover border-r-2 border-scooter-500"
                     width={7360}
                     height={4912}
                     alt="background authentication image"
@@ -19,26 +25,38 @@ export default function AuthLayout({
                     className="
                         absolute
                         text-white
-                        w-fit
-                        text-[2.5rem]
+                        xl:text-[2.5rem]
+                        lg:text-[2rem]
+                        md:text-[1.5rem]
                         font-exo
                         font-medium
-                        top-48
-                        left-36
+                        top-0
+                        right-0
+                        w-full
+                        h-full
                         animate-fade-in
 
-                        [&>div]:backdrop-blur
-                        [&>div]:w-fit
-                        [&>div]:px-3
-                        [&>div]:py-1
-                        [&>div]:rounded-3xl
-                        [&>div]:bg-scooter-900/40
-                        [&>div]:border
-                        [&>div]:border-scooter-400
+                        flex
+                        flex-col
+                        justify-center
+                        items-center
                     "
                 >
-                    <div>A vida é muito curta,</div>
-                    <div className="ml-32">para não ter seu lugar especial.</div>
+                    <div
+                        className="
+                            [&>div]:backdrop-blur
+                            [&>div]:w-fit
+                            [&>div]:px-3
+                            [&>div]:py-1
+                            [&>div]:rounded-2xl
+                            [&>div]:bg-scooter-900/40
+                            [&>div]:border
+                            [&>div]:border-scooter-400
+                        "
+                    >
+                        <div>A vida é muito curta,</div>
+                        <div className="xl:ml-32 ml-4">para não ter seu lugar especial.</div>
+                    </div>
                 </div>
             </div>
             {children}
