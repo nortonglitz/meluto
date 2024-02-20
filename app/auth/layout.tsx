@@ -27,7 +27,7 @@ export default function AuthLayout({
                         text-white
                         xl:text-[2.5rem]
                         lg:text-[2rem]
-                        md:text-[1.5rem]
+                        md:text-[1.3rem]
                         font-exo
                         font-medium
                         top-0
