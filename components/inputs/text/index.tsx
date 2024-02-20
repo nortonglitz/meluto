@@ -2,7 +2,7 @@ import { DetailedHTMLProps, InputHTMLAttributes, forwardRef } from "react"
 
 interface InputTextProps extends DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement> {
     error?: string
-    inputClassName?: string
+    wrapperClassName?: string
     className?: string
 }
 
@@ -11,7 +11,7 @@ interface InputTextProps extends DetailedHTMLProps<InputHTMLAttributes<HTMLInput
 
 export const InputText = forwardRef<HTMLInputElement, InputTextProps>(({
     className,
-    inputClassName,
+    wrapperClassName,
     error,
     ...props
 }, ref) => {
@@ -19,7 +19,7 @@ export const InputText = forwardRef<HTMLInputElement, InputTextProps>(({
     const hasError = !!error
 
     return (
-        <div className={className}>
+        <div className={wrapperClassName}>
             <input
                 ref={ref}
                 type="text"
@@ -38,7 +38,7 @@ export const InputText = forwardRef<HTMLInputElement, InputTextProps>(({
                     ${hasError ? "border-red-500" : ""}
                     ${hasError ? "outline-red-500" : ""}
 
-                    ${inputClassName}
+                    ${className}
                 `}
                 {...props}
             />
