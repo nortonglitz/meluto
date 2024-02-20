@@ -1,11 +1,11 @@
 "use client"
 
-import * as z from "zod"
 import { InputText, Button } from "@/components"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useSearchParams } from "next/navigation"
 import { LoginSchema, loginSchema } from "@/validations/schemas/auth"
+import { login } from "@/actions/login"
 
 export const LoginForm = () => {
 
@@ -18,8 +18,13 @@ export const LoginForm = () => {
         resolver: zodResolver(loginSchema)
     })
 
-    const onSubmit = (values: LoginSchema) => {
-        //TODO: Login action
+    const onSubmit = async (values: LoginSchema) => {
+        const { status, message } = await login("email", { email: values.email })
+        if (status === "success") {
+            console.log(message)
+        } else {
+            console.log(message)
+        }
     }
 
     return (
