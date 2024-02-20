@@ -5,7 +5,9 @@ import { postgres } from "@/postgres"
 
 export const {
     handlers: { GET, POST },
-    auth
+    auth,
+    signIn,
+    signOut
 } = NextAuth({
     adapter: DrizzleAdapter(postgres),
     providers: [Google({
