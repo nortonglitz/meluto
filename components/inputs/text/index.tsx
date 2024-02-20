@@ -32,7 +32,7 @@ export const InputText = forwardRef<HTMLInputElement, InputTextProps>(({
                     py-2
                     px-4
 
-                    disabled:opacity-80
+                    disabled:opacity-50
                     disabled:cursor-not-allowed
 
                     ${hasError ? "border-red-500" : ""}
