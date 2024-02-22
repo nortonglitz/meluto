@@ -10,10 +10,10 @@ import { users } from "./users"
 export const sessions = pgTable(
     "session",
     {
-        sessionToken: text("session_token")
+        sessionToken: text("sessionToken")
             .notNull()
             .primaryKey(),
-        userId: text("user_id")
+        userId: text("userId")
             .notNull()
             .references(() => users.id, { onDelete: "cascade" }),
         expires: timestamp("expires", { mode: "date" })

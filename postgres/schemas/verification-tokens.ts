@@ -6,7 +6,7 @@ import {
 } from "drizzle-orm/pg-core"
 
 export const verificationTokens = pgTable(
-    "verification_tokens",
+    "verificationToken",
     {
         identifier: text("identifier")
             .notNull(),

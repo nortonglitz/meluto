@@ -4,10 +4,10 @@ import {
     timestamp
 } from "drizzle-orm/pg-core"
 
-export const users = pgTable("users", {
+export const users = pgTable("user", {
     id: text("id").notNull().primaryKey(),
     name: text("name"),
     email: text("email").notNull(),
-    emailVerified: timestamp("email_verified", { mode: "date" }),
+    emailVerified: timestamp("emailVerified", { mode: "date" }),
     image: text("image"),
 })

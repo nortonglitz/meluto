@@ -9,9 +9,9 @@ import { users } from "./users"
 import { AdapterAccount } from "@auth/core/adapters"
 
 export const accounts = pgTable(
-    "accounts",
+    "account",
     {
-        userId: text("user_id")
+        userId: text("userId")
             .notNull()
             .references(() => users.id, { onDelete: "cascade" }),
         type: text("type")
@@ -19,7 +19,7 @@ export const accounts = pgTable(
             .notNull(),
         provider: text("provider")
             .notNull(),
-        providerAccountId: text("provider_account_id")
+        providerAccountId: text("providerAccountId")
             .notNull(),
         refresh_token: text("refresh_token"),
         access_token: text("access_token"),
