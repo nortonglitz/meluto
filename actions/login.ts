@@ -3,6 +3,7 @@
 import { LoginSchema, loginSchema } from "@/validations/schemas/auth"
 import { BuiltInProviderType } from "next-auth/providers"
 import { signIn } from "@/auth"
+import { isRedirectError } from "next/dist/client/components/redirect"
 
 type LoginReturnType = {
     status: "error" | "success"
@@ -25,20 +26,26 @@ export const login = async (provider: BuiltInProviderType, values: LoginSchema):
 
         const { email } = validatedFields.data
 
-        if (provider === "email") {
+        if (provider === "resend") {
             await signIn(provider, {
-                email: email
+                email: email,
+                redirect: false
             })
+
+            return {
+                status: "success",
+                message: "Logged in"
+            }
         }
 
         return {
-            status: "success",
-            message: "Logged in"
+            status: "error",
+            message: "Did not provide correct specs"
         }
 
-    } catch (err: any) {
+    } catch (error: any) {
 
-        console.error(err)
+        console.error(error)
 
         return {
             status: "error",
