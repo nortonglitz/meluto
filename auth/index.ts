@@ -1,5 +1,6 @@
 import NextAuth from "next-auth"
 import Google from "@auth/core/providers/google"
+import Resend from "@auth/core/providers/resend"
 import { DrizzleAdapter } from "@auth/drizzle-adapter"
 import { postgres } from "@/postgres"
 
@@ -17,38 +18,16 @@ export const {
             clientId: process.env.AUTH_GOOGLE_ID,
             clientSecret: process.env.AUTH_GOOGLE_SECRET
         }),
-        {
-            id: "resend",
-            type: "email",
-            name: "",
-            from: "",
-            maxAge: 1200,
-            options: {},
-            async sendVerificationRequest({ identifier: email, url }) {
-                const response = await fetch(process.env.EMAIL_SERVER_API, {
-                    body: JSON.stringify({
-                        personalizations: [{ to: [{ email }] }],
-                        from: { email: "noreply@company.com" },
-                        subject: "Sign in to Your page",
-                        content: [
-                            {
-                                type: "text/plain",
-                                value: `Please click here to authenticate - ${url}`,
-                            }
-                        ]
-                    }),
-                    headers: {
-                        Authorization: `Bearer ${process.env.EMAIL_SERVER_API_KEY}`,
-                        "Content-Type": "application/json"
-                    },
-                    method: "POST"
-                })
-                if (!response.ok) {
-                    const { errors } = await response.json()
-                    throw new Error(JSON.stringify(errors))
-                }
-            }
-        }
         // Nodemailer is not edge compatible, use http based email provider https://authjs.dev/guides/providers/email-http
-    ]
+        // Resend https://github.com/nextauthjs/next-auth/blob/main/packages/core/src/providers/resend.ts
+        Resend({
+            apiKey: process.env.EMAIL_SERVER_API_KEY,
+            from: "Meluto <no-reply@mailing.meluto.com>"
+        })
+    ],
+    pages: {
+        signIn: "/auth/login",
+        verifyRequest: "/auth/verify-request",
+        signOut: "/"
+    }
 })
