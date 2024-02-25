@@ -1,6 +1,6 @@
 "use client"
 
-import { InputText, Button } from "@/components"
+import { InputText, Button, Logo } from "@/components"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useSearchParams } from "next/navigation"
@@ -9,6 +9,7 @@ import { login } from "@/actions/login"
 import { SocialMediaButton } from "./social-media-button"
 import { useState } from "react"
 import { signIn } from "next-auth/react"
+import { EmailSent } from "./email-sent"
 
 export const LoginForm = () => {
 
@@ -16,6 +17,7 @@ export const LoginForm = () => {
     // Find more at https://authjs.dev/guides/basics/pages#error-codes
     const searchParams = useSearchParams()
     const authError = searchParams.get("error")
+    const [emailSent, setEmailSent] = useState(false)
     const [isLoading, setIsLoading] = useState(false)
 
     const { handleSubmit, register, formState: { errors } } = useForm<LoginSchema>({
@@ -23,12 +25,15 @@ export const LoginForm = () => {
     })
 
     const onSubmit = async (values: LoginSchema) => {
-        const { status, message } = await login("email", { email: values.email })
-        if (status === "success") {
+        setIsLoading(true)
+        const { status, message } = await login("resend", { email: values.email })
+        if (status === "error") {
+            //TODO: create auth error page
             console.log(message)
         } else {
-            console.log(message)
+            setEmailSent(true)
         }
+        setIsLoading(false)
     }
 
     const handleSocialClick = () => {
@@ -36,8 +41,27 @@ export const LoginForm = () => {
         signIn("google")
     }
 
+    if (emailSent) {
+        return <EmailSent />
+    }
+
     return (
         <>
+            <div className="absolute -top-[30%] flex justify-center">
+                <Logo className="w-[60%]" />
+            </div>
+            <h1
+                className="
+                            left-6
+                            text-3xl
+                            font-exo
+                            font-semibold
+                            text-scooter-400
+                        "
+            >
+                Entrar
+            </h1>
+            <p className="text-gray-400 mb-4">Estamos felizes por você estar aqui. Entre para ter acesso a todo o nosso conteúdo.</p>
             <form className="space-y-4" onSubmit={handleSubmit(onSubmit)}>
                 <InputText disabled={isLoading} placeholder="E-mail" className="w-full" {...register("email")} error={errors.email?.message} />
                 <Button disabled={isLoading} className="w-full" type="submit">Entrar</Button>
@@ -51,5 +75,3 @@ export const LoginForm = () => {
         </>
     )
 }
-
-export default LoginForm
