@@ -3,7 +3,6 @@
 import { InputText, Button, Logo } from "@/components"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
-import { useSearchParams } from "next/navigation"
 import { LoginSchema, loginSchema } from "@/validations/schemas/auth"
 import { login } from "@/actions/login"
 import { SocialMediaButton } from "./social-media-button"
@@ -12,19 +11,19 @@ import { signIn } from "next-auth/react"
 import { EmailSent } from "./email-sent"
 
 // Use this method to avoid use client, also use this to return an error feedback
-const Error = () => {
-    const searchParams = useSearchParams()
-    const authError = searchParams.get("error")
+// const Error = () => {
+//     const searchParams = useSearchParams()
+//     const authError = searchParams.get("error")
 
-    // When error auth.js find an error it sends as url param ?error=""
-    // Find more at https://authjs.dev/guides/basics/pages#error-codes
+//     When error auth.js find an error it sends as url param ?error=""
+//     Find more at https://authjs.dev/guides/basics/pages#error-codes
 
-    return (
-        <div>
-            {authError}
-        </div>
-    )
-}
+//     return (
+//         <div>
+//             {authError}
+//         </div>
+//     )
+// }
 
 export const LoginForm = () => {
 
