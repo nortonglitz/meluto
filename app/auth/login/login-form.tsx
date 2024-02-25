@@ -11,12 +11,23 @@ import { useState } from "react"
 import { signIn } from "next-auth/react"
 import { EmailSent } from "./email-sent"
 
-export const LoginForm = () => {
+// Use this method to avoid use client, also use this to return an error feedback
+const Error = () => {
+    const searchParams = useSearchParams()
+    const authError = searchParams.get("error")
 
     // When error auth.js find an error it sends as url param ?error=""
     // Find more at https://authjs.dev/guides/basics/pages#error-codes
-    const searchParams = useSearchParams()
-    const authError = searchParams.get("error")
+
+    return (
+        <div>
+            {authError}
+        </div>
+    )
+}
+
+export const LoginForm = () => {
+
     const [emailSent, setEmailSent] = useState(false)
     const [isLoading, setIsLoading] = useState(false)
 
