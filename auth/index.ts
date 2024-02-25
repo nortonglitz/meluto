@@ -3,6 +3,7 @@ import Google from "@auth/core/providers/google"
 import Resend from "@auth/core/providers/resend"
 import { DrizzleAdapter } from "@auth/drizzle-adapter"
 import { postgres } from "@/postgres"
+import { sendVerificationRequest } from "@/mail"
 
 // Documentation https://authjs.dev/reference/nextjs
 
@@ -22,7 +23,9 @@ export const {
         // Resend https://github.com/nextauthjs/next-auth/blob/main/packages/core/src/providers/resend.ts
         Resend({
             apiKey: process.env.EMAIL_SERVER_API_KEY,
-            from: "Meluto <no-reply@mailing.meluto.com>"
+            from: "Meluto <no-reply@mailing.meluto.com>",
+            server: process.env.EMAIL_SERVER_API_URL,
+            sendVerificationRequest
         })
     ],
     pages: {

@@ -8,7 +8,7 @@ namespace NodeJS {
 
         EMAIL_SERVER_USER: string
         EMAIL_SERVER_API_KEY: string
-        EMAIL_SERVER_API: string
+        EMAIL_SERVER_API_URL: string
         EMAIL_SERVER_HOST: string
         EMAIL_SERVER_PORT: string
         EMAIL_FROM: string
