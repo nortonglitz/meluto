@@ -20,7 +20,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <SessionProvider>
-        <body className={`${murecho.variable} font-murecho ${exo.variable}`}>
+        <body
+          className={`
+            ${murecho.variable}
+            font-murecho
+            ${exo.variable}
+            dark:bg-gray-950
+            dark:text-white
+          `}>
           {children}
         </body>
       </SessionProvider>

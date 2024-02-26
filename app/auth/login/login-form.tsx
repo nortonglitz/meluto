@@ -71,7 +71,14 @@ export const LoginForm = () => {
             >
                 Entrar
             </h1>
-            <p className="text-gray-400 mb-4">Estamos felizes por você estar aqui. Entre para ter acesso a todo o nosso conteúdo.</p>
+            <p
+                className="
+                    mb-4
+                    text-gray-400
+                "
+            >
+                Estamos felizes por você estar aqui. Entre para ter acesso a todo o nosso conteúdo.
+            </p>
             <form className="space-y-4" onSubmit={handleSubmit(onSubmit)}>
                 <InputText disabled={isLoading} placeholder="E-mail" className="w-full" {...register("email")} error={errors.email?.message} />
                 <Button disabled={isLoading} className="w-full" type="submit">Entrar</Button>
