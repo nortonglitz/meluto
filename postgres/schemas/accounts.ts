@@ -2,7 +2,8 @@ import {
     pgTable,
     text,
     integer,
-    primaryKey
+    primaryKey,
+    timestamp
 } from "drizzle-orm/pg-core"
 
 import { users } from "./users"
@@ -11,6 +12,8 @@ import { AdapterAccount } from "@auth/core/adapters"
 export const accounts = pgTable(
     "account",
     {
+        created_at: timestamp("created_at").defaultNow().notNull(),
+        updated_at: timestamp("updated_at").defaultNow().notNull(),
         userId: text("userId")
             .notNull()
             .references(() => users.id, { onDelete: "cascade" }),
