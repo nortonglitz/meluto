@@ -26,8 +26,10 @@ export const SocialMediaButton = ({
                 divide-x
                 space-x-3
                 text-scooter-950
-
                 hover:bg-gray-100
+                
+                dark:text-scooter-100
+                dark:hover:bg-gray-900
 
                 disabled:cursor-not-allowed
                 disabled:opacity-50
