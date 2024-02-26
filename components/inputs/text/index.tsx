@@ -26,11 +26,14 @@ export const InputText = forwardRef<HTMLInputElement, InputTextProps>(({
                 autoFocus
                 className={`
                     border
-                    bg-gray-100
                     border-gray-500
                     rounded-3xl
                     py-2
                     px-4
+                    
+                    bg-gray-100
+
+                    dark:bg-gray-900
 
                     disabled:opacity-50
                     disabled:cursor-not-allowed
