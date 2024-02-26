@@ -1,4 +1,10 @@
 import { LoginForm } from "./login-form"
+import type { Metadata } from "next"
+
+export const metadata: Metadata = {
+    title: "Login ─ Meluto",
+    description: "Página de acesso a plataforma meluto."
+}
 
 const LoginPage = () => {
 
