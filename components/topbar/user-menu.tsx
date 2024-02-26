@@ -14,7 +14,7 @@ export const UserMenu = () => {
     const unauthMenu = (
         <>
             <li><Link href="/auth/login" className="font-medium">Entrar</Link></li>
-            <hr className="my-2" />
+            <hr className="my-2 dark:border-gray-800" />
             <li>Ajuda</li>
         </>
     )
@@ -44,13 +44,16 @@ export const UserMenu = () => {
                         ${menuIsOpen ? "block" : "hidden"}
                         absolute
                         right-0
-                        top-[100%]
+                        top-[calc(100%_+_0.5rem)]
                         border
-                        border-gray-200
                         rounded-xl
                         overflow-hidden
                         shadow-md
                         min-w-32
+
+                        border-gray-200
+
+                        dark:border-gray-800
                     `}
                 >
                     <ul
@@ -63,6 +66,7 @@ export const UserMenu = () => {
                             [&>li]:cursor-pointer
 
                             [&>li:hover]:bg-gray-100
+                            dark:[&>li:hover]:bg-gray-900
                         "
                     >
                         {status === "unauthenticated" && unauthMenu}
