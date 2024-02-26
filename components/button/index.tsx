@@ -24,6 +24,9 @@ export const Button = ({
                     rounded-3xl
 
                     hover:bg-gray-100
+
+                    dark:hover:bg-gray-900
+                    
                     ${className}
                 `}
                 {...props}
