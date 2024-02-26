@@ -43,6 +43,7 @@ export const Button = ({
                 px-3
                 py-2
                 rounded-3xl
+                font-medium
 
                 bg-scooter-300
                 text-scooter-950
