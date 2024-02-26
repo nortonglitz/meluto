@@ -1,7 +1,16 @@
-export const Avatar = () => {
+interface AvatarProps {
+    src: string | null | undefined
+    loading?: boolean
+}
+
+export const Avatar = ({
+    src,
+    loading = false
+}: AvatarProps) => {
     return (
         <img
-            className="
+            className={`
+                relative
                 transition-all
                 rounded-full
                 h-8
@@ -10,8 +19,10 @@ export const Avatar = () => {
 
                 hover:outline
                 hover:outline-4
-            "
-            src="/images/placeholders/blank-profile.webp"
+
+                ${loading && "animate-pulse"}
+            `}
+            src={src ?? "/images/placeholders/blank-profile.webp"}
             alt="profile picture"
         />
     )
