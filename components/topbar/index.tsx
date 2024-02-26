@@ -1,5 +1,4 @@
 import { Logo, Button } from "@/components"
-import { Avatar } from "./avatar"
 import { UserMenu } from "./user-menu"
 import Link from "next/link"
 
@@ -20,9 +19,7 @@ export const Topbar = () => {
                 <Button link >
                     Anuncie seu imóvel
                 </Button>
-                <UserMenu>
-                    <Avatar />
-                </UserMenu>
+                <UserMenu />
             </div>
         </div>
     )
