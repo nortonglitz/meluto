@@ -30,7 +30,7 @@ export const {
     ],
     pages: {
         signIn: "/auth/login",
-        verifyRequest: "/auth/verify-request",
-        signOut: "/"
+        verifyRequest: "/auth/verify-request"
+
     }
 })
