@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import { Murecho, Exo } from "next/font/google"
 import "./globals.css"
+import { SessionProvider } from "next-auth/react"
 
 // Exo, Anek_Tamil, Murecho
 const murecho = Murecho({ subsets: ["latin"], variable: "--font-murecho" })
@@ -18,9 +19,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${murecho.variable} font-murecho ${exo.variable}`}>
-        {children}
-      </body>
+      <SessionProvider>
+        <body className={`${murecho.variable} font-murecho ${exo.variable}`}>
+          {children}
+        </body>
+      </SessionProvider>
     </html>
   )
 }
