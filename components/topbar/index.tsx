@@ -21,8 +21,8 @@ export const Topbar = () => {
             <Link href="/" className="md:hidden">
                 <Logo small className="h-7" />
             </Link>
-            <div className="flex space-x-2 items-center text-lg md:space-x-4">
-                <Button link>
+            <div className="flex items-center text-lg">
+                <Button link className="mr-4">
                     Anuncie seu imóvel
                 </Button>
                 <UserMenu />
