@@ -23,7 +23,6 @@ export const InputText = forwardRef<HTMLInputElement, InputTextProps>(({
             <input
                 ref={ref}
                 type="text"
-                autoFocus
                 className={`
                     border
                     border-gray-500
