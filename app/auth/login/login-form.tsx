@@ -9,6 +9,7 @@ import { SocialMediaButton } from "./social-media-button"
 import { useState } from "react"
 import { signIn } from "next-auth/react"
 import { EmailSent } from "./email-sent"
+import { Description } from "@/components"
 
 // Use this method to avoid use client, also use this to return an error feedback
 // const Error = () => {
@@ -71,14 +72,9 @@ export const LoginForm = () => {
             >
                 Entrar
             </h1>
-            <p
-                className="
-                    mb-4
-                    text-gray-400
-                "
-            >
+            <Description className="mb-4">
                 Estamos felizes por você estar aqui. Entre para ter acesso a todo o nosso conteúdo.
-            </p>
+            </Description>
             <form className="space-y-4" onSubmit={handleSubmit(onSubmit)}>
                 <InputText disabled={isLoading} placeholder="E-mail" className="w-full" {...register("email")} error={errors.email?.message} />
                 <Button disabled={isLoading} className="w-full" type="submit">Entrar</Button>

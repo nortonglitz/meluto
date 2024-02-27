@@ -1,4 +1,5 @@
 import Image from "next/image"
+import { Description } from "@/components"
 
 export const EmailSent = () => {
 
@@ -24,7 +25,7 @@ export const EmailSent = () => {
             >
                 Verifique seu e-mail
             </h1>
-            <p className="text-gray-400 mb-4">Nós enviamos um link em sua caixa de entrada. Use-o para efetuar o login.</p>
+            <Description className="mt-2">Nós enviamos um link em sua caixa de entrada. Use-o para efetuar o login.</Description>
         </div>
     )
 }
