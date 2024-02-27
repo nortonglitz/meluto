@@ -31,7 +31,7 @@ export const UserMenu = () => {
             <li className="font-medium"><FaHeart />Favoritos</li>
             <hr className="my-2 dark:border-gray-700" />
             <li>Ajuda</li>
-            <li onClick={handleLinkClick}><Link href="/account/settings">Conta</Link></li>
+            <Link href="/account/settings"><li onClick={handleLinkClick}>Conta</li></Link>
             <li className="text-red-500" onClick={() => signOut()}>Sair</li>
         </>
     )
@@ -101,21 +101,21 @@ export const UserMenu = () => {
                             className="
                                 text-nowrap
 
-                                [&>li]:px-4
-                                [&>li]:py-4
-                                [&>li]:cursor-pointer
-                                [&>li]:flex
-                                [&>li]:items-center
-                                [&>li>svg]:mr-2
+                                [&_li]:px-4
+                                [&_li]:py-4
+                                [&_li]:cursor-pointer
+                                [&_li]:flex
+                                [&_li]:items-center
+                                [&_li>svg]:mr-2
 
                                 py-2
                                 text-xl
 
-                                sm:[&>li]:py-2
+                                sm:[&_li]:py-2
                                 sm:text-lg
 
-                                [&>li:hover]:bg-gray-100
-                                dark:[&>li:hover]:bg-gray-800
+                                [&_li:hover]:bg-gray-100
+                                dark:[&_li:hover]:bg-gray-800
                             "
                         >
                             {status === "unauthenticated" && unauthMenu}
