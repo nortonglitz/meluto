@@ -19,7 +19,7 @@ export const UserMenu = () => {
 
     const unauthMenu = (
         <>
-            <li><Link href="/auth/login" onClick={handleLinkClick} className="font-medium">Entrar</Link></li>
+            <li onClick={handleLinkClick} className="font-medium"><Link href="/auth/login">Entrar</Link></li>
             <hr className="my-2 dark:border-gray-700" />
             <li>Ajuda</li>
         </>
@@ -31,7 +31,7 @@ export const UserMenu = () => {
             <li className="font-medium"><FaHeart />Favoritos</li>
             <hr className="my-2 dark:border-gray-700" />
             <li>Ajuda</li>
-            <li><Link href="/account/settings" onClick={handleLinkClick}>Conta</Link></li>
+            <li onClick={handleLinkClick}><Link href="/account/settings">Conta</Link></li>
             <li className="text-red-500" onClick={() => signOut()}>Sair</li>
         </>
     )
