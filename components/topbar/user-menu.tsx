@@ -5,6 +5,8 @@ import Link from "next/link"
 import { useState } from "react"
 import { useSession, signOut } from "next-auth/react"
 import { Avatar } from "./avatar"
+import { FaHeart } from "react-icons/fa"
+import { FaSignHanging } from "react-icons/fa6"
 
 export const UserMenu = () => {
 
@@ -21,9 +23,9 @@ export const UserMenu = () => {
 
     const authMenu = (
         <>
-            <li className="font-medium">Anúncios</li>
-            <li className="font-medium">Favoritos</li>
-            <hr className="my-2" />
+            <li className="font-medium"><FaSignHanging />Anúncios</li>
+            <li className="font-medium"><FaHeart />Favoritos</li>
+            <hr className="my-2 dark:border-gray-800" />
             <li>Ajuda</li>
             <li>Conta</li>
             <li className="text-red-500" onClick={() => signOut()}>Sair</li>
@@ -64,6 +66,9 @@ export const UserMenu = () => {
                             [&>li]:px-4
                             [&>li]:py-2
                             [&>li]:cursor-pointer
+                            [&>li]:flex
+                            [&>li]:items-center
+                            [&>li>svg]:mr-2
 
                             [&>li:hover]:bg-gray-100
                             dark:[&>li:hover]:bg-gray-900
