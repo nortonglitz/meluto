@@ -8,15 +8,21 @@ export const Topbar = () => {
             className="
                 flex
                 justify-between
+                items-center
                 py-2
-                px-20
+                lg:px-20
+                md:px-10
+                px-5
             "
         >
-            <Link href="/">
+            <Link href="/" className="hidden md:block">
                 <Logo className="h-7" />
             </Link>
-            <div className="flex space-x-4 items-center">
-                <Button link >
+            <Link href="/" className="md:hidden">
+                <Logo small className="h-7" />
+            </Link>
+            <div className="flex space-x-2 items-center text-sm md:space-x-4 md:text-base">
+                <Button link>
                     Anuncie seu imóvel
                 </Button>
                 <UserMenu />
