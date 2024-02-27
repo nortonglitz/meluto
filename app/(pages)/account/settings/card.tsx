@@ -14,6 +14,7 @@ export const Card = ({
     return (
         <div
             className="
+                    select-none
                     w-full
                     sm:max-w-96
                     transition
