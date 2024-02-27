@@ -6,3 +6,5 @@ export { Button } from "./button"
 export { InputText } from "./inputs/text"
 
 export { ListenerClickOutside } from "./listeners/click-outside"
+
+export { Description } from "./typography/description"
