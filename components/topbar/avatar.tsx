@@ -14,8 +14,8 @@ export const Avatar = ({
         <div
             className={`
                 transition-all
-                h-9
-                w-9
+                h-11
+                w-11
                 rounded-full
                 flex
                 justify-center
@@ -45,8 +45,8 @@ export const Avatar = ({
                 :
                 <FaUser
                     className="
-                        h-5
-                        w-5
+                        h-6
+                        w-6
                         dark:text-scooter-200
                         text-scooter-900
                     "
