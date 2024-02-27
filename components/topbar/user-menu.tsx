@@ -75,8 +75,8 @@ export const UserMenu = () => {
 
                             fixed
                             bottom-0
-                            left-0
-                            w-full
+                            right-1
+                            left-1
                             rounded-t-xl
                             border-b-0
 
