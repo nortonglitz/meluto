@@ -1,6 +1,6 @@
 import { Topbar } from "@/components"
 
-export default function AuthLayout({
+export default function PagesLayout({
     children,
 }: Readonly<{
     children: React.ReactNode;
