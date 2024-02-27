@@ -3,7 +3,7 @@ import { Card } from "./card"
 
 export default function AccountSettingsPage() {
     return (
-        <main>
+        <main className="animate-fade-in">
             <h1 className="text-4xl font-exo font-medium text-center my-10">
                 Conta
             </h1>
