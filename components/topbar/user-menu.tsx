@@ -34,7 +34,7 @@ export const UserMenu = () => {
 
     return (
         <ListenerClickOutside onClickOutside={() => setMenuIsOpen(false)}>
-            <div className="relative rounded-full">
+            <div className="sm:relative rounded-full">
                 <button className="rounded-full" onClick={() => setMenuIsOpen(!menuIsOpen)}>
                     <Avatar
                         loading={status === "loading"}
@@ -44,14 +44,22 @@ export const UserMenu = () => {
                 <div
                     className={`
                         ${menuIsOpen ? "block" : "hidden"}
-                        absolute
-                        right-0
-                        top-[calc(100%_+_0.5rem)]
                         border
                         rounded-xl
                         overflow-hidden
                         shadow-md
-                        min-w-32
+
+                        fixed
+                        bottom-0
+                        left-0
+                        w-full
+
+                        sm:absolute
+                        sm:right-0
+                        sm:left-auto
+                        sm:bottom-auto
+                        sm:top-[calc(100%_+_0.5rem)]
+                        sm:min-w-32
 
                         border-gray-200
 
@@ -62,13 +70,17 @@ export const UserMenu = () => {
                         className="
                             text-nowrap
                             py-2
+                            text-xl
 
                             [&>li]:px-4
-                            [&>li]:py-2
+                            [&>li]:py-4
                             [&>li]:cursor-pointer
                             [&>li]:flex
                             [&>li]:items-center
                             [&>li>svg]:mr-2
+
+                            sm:[&>li]:py-2
+                            sm:text-base
 
                             [&>li:hover]:bg-gray-100
                             dark:[&>li:hover]:bg-gray-900
