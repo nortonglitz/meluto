@@ -20,9 +20,7 @@ const MenuItem = ({
     return (
         <Link
             href={href}
-        >
-            <li
-                className={`
+            className={`
                     ${chosen && "text-scooter-500 dark:text-scooter-300"}
                     ${!chosen && "text-gray-600 dark:text-gray-400"}
 
@@ -38,10 +36,9 @@ const MenuItem = ({
                     hover:bg-gray-100
                 
                 `}
-            >
-                {icon}
-                {title}
-            </li>
+        >
+            {icon}
+            {title}
         </Link>
     )
 }
@@ -59,7 +56,7 @@ export const Menu = () => {
                 relative
             "
         >
-            <menu
+            <nav
                 className="
                     sticky
                     top-10
@@ -95,7 +92,7 @@ export const Menu = () => {
                     chosen={pathname === "/account/settings/subscription"}
                     href="/account/settings/subscription"
                 />
-            </menu>
+            </nav>
         </aside>
     )
 }

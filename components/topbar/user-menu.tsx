@@ -18,32 +18,32 @@ export const UserMenu = () => {
     }
 
     const unauthMenu = (
-        <>
-            <li onClick={handleLinkClick} className="font-medium"><Link href="/auth/login">Entrar</Link></li>
+        <ul>
+            <Link href="/auth/login"><li onClick={handleLinkClick} className="font-medium">Entrar</li></Link>
             <hr className="my-2 dark:border-gray-700" />
             <li>Ajuda</li>
-        </>
+        </ul>
     )
 
     const authMenu = (
-        <>
+        <ul>
             <li className="font-medium"><FaSignHanging />Anúncios</li>
             <li className="font-medium"><FaHeart />Favoritos</li>
             <hr className="my-2 dark:border-gray-700" />
             <li>Ajuda</li>
             <Link href="/account/settings"><li onClick={handleLinkClick}>Conta</li></Link>
             <li className="text-red-500" onClick={() => signOut()}>Sair</li>
-        </>
+        </ul>
     )
 
     const skeleton = (
-        <>
+        <ul>
             <li className="sm:w-[10rem] bg-gray-800 mx-4 my-4 rounded-full animate-pulse" />
             <li className="sm:w-[10rem] bg-gray-800 mx-4 my-4 rounded-full animate-pulse" />
             <li className="sm:w-[10rem] bg-gray-800 mx-4 my-4 rounded-full animate-pulse" />
             <hr className="my-4 dark:border-gray-800" />
             <li className="sm:w-[10rem] bg-gray-800 mx-4 my-4 rounded-full animate-pulse" />
-        </>
+        </ul>
     )
 
     return (
@@ -97,7 +97,7 @@ export const UserMenu = () => {
                             dark:bg-gray-900
                         `}
                     >
-                        <menu
+                        <nav
                             className="
                                 text-nowrap
 
@@ -121,7 +121,7 @@ export const UserMenu = () => {
                             {status === "unauthenticated" && unauthMenu}
                             {status === "authenticated" && authMenu}
                             {status === "loading" && skeleton}
-                        </menu>
+                        </nav>
                     </div>
                 </div>
             </ListenerClickOutside>
