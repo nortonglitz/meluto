@@ -32,6 +32,16 @@ export const UserMenu = () => {
         </>
     )
 
+    const skeleton = (
+        <>
+            <li className="sm:w-[10rem] bg-gray-800 mx-4 my-4 rounded-full animate-pulse" />
+            <li className="sm:w-[10rem] bg-gray-800 mx-4 my-4 rounded-full animate-pulse" />
+            <li className="sm:w-[10rem] bg-gray-800 mx-4 my-4 rounded-full animate-pulse" />
+            <hr className="my-4 dark:border-gray-800" />
+            <li className="sm:w-[10rem] bg-gray-800 mx-4 my-4 rounded-full animate-pulse" />
+        </>
+    )
+
     return (
         <ListenerClickOutside onClickOutside={() => setMenuIsOpen(false)}>
             <div className="sm:relative rounded-full">
@@ -45,7 +55,6 @@ export const UserMenu = () => {
                     className={`
                         ${menuIsOpen ? "block" : "hidden"}
                         border
-                        rounded-xl
                         overflow-hidden
                         shadow-md
 
@@ -53,24 +62,26 @@ export const UserMenu = () => {
                         bottom-0
                         left-0
                         w-full
+                        rounded-t-xl
 
                         sm:absolute
                         sm:right-0
                         sm:left-auto
                         sm:bottom-auto
                         sm:top-[calc(100%_+_0.5rem)]
-                        sm:min-w-32
+                        sm:w-fit
+                        sm:rounded-b-xl
 
                         border-gray-200
+                        bg-white
 
                         dark:border-gray-800
+                        dark:bg-gray-950
                     `}
                 >
                     <ul
                         className="
                             text-nowrap
-                            py-2
-                            text-xl
 
                             [&>li]:px-4
                             [&>li]:py-4
@@ -79,8 +90,11 @@ export const UserMenu = () => {
                             [&>li]:items-center
                             [&>li>svg]:mr-2
 
+                            py-2
+                            text-xl
+
                             sm:[&>li]:py-2
-                            sm:text-base
+                            sm:text-lg
 
                             [&>li:hover]:bg-gray-100
                             dark:[&>li:hover]:bg-gray-900
@@ -88,6 +102,7 @@ export const UserMenu = () => {
                     >
                         {status === "unauthenticated" && unauthMenu}
                         {status === "authenticated" && authMenu}
+                        {status === "loading" && skeleton}
                     </ul>
                 </div>
             </div>
