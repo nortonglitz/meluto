@@ -71,6 +71,7 @@ export const UserMenu = () => {
                         sm:top-[calc(100%_+_0.5rem)]
                         sm:w-fit
                         sm:rounded-b-xl
+                        sm:min-w-44
 
                         border-gray-200
                         bg-white
