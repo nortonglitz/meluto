@@ -18,32 +18,31 @@ const MenuItem = ({
     href
 }: MenuItem) => {
     return (
-        <li
-            className={`
-                ${chosen && "text-scooter-500 dark:text-scooter-300"}
-                ${!chosen && "text-gray-600 dark:text-gray-400"}
-                px-6
-                cursor-pointer
-                py-1
-
-                dark:hover:bg-gray-800
-                hover:bg-gray-100
-                
-            `}
+        <Link
+            href={href}
         >
-            <Link
-                href={href}
-                className="
+            <li
+                className={`
+                    ${chosen && "text-scooter-500 dark:text-scooter-300"}
+                    ${!chosen && "text-gray-600 dark:text-gray-400"}
+
                     flex
                     items-center
                     text-nowrap
                     [&>svg]:mr-2
-                "
+                    px-6
+                    cursor-pointer
+                    py-2
+
+                    dark:hover:bg-gray-800
+                    hover:bg-gray-100
+                
+                `}
             >
                 {icon}
                 {title}
-            </Link>
-        </li>
+            </li>
+        </Link>
     )
 }
 
@@ -60,7 +59,7 @@ export const Menu = () => {
                 relative
             "
         >
-            <ul
+            <menu
                 className="
                     sticky
                     top-10
@@ -96,7 +95,7 @@ export const Menu = () => {
                     chosen={pathname === "/account/settings/subscription"}
                     href="/account/settings/subscription"
                 />
-            </ul>
+            </menu>
         </aside>
     )
 }

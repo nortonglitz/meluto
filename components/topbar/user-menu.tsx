@@ -97,7 +97,7 @@ export const UserMenu = () => {
                             dark:bg-gray-900
                         `}
                     >
-                        <ul
+                        <menu
                             className="
                                 text-nowrap
 
@@ -121,7 +121,7 @@ export const UserMenu = () => {
                             {status === "unauthenticated" && unauthMenu}
                             {status === "authenticated" && authMenu}
                             {status === "loading" && skeleton}
-                        </ul>
+                        </menu>
                     </div>
                 </div>
             </ListenerClickOutside>
