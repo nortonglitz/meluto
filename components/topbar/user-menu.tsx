@@ -91,7 +91,7 @@ export const UserMenu = () => {
                             sm:border-b
 
                             border-gray-200
-                            bg-white
+                            bg-gray-50
 
                             dark:border-gray-700
                             dark:bg-gray-900
