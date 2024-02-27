@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 export default function AccountSettingsPage() {
     return (
-        <main className="animate-fade-in">
+        <main className="animate-fade-in mx-2 sm:mx-0">
             <h1 className="text-4xl font-exo font-medium text-center my-10">
                 Conta
             </h1>
