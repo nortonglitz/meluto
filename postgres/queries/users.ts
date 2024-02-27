@@ -1,4 +1,4 @@
-import { users } from "../schemas"
+import { users } from "../tables"
 import { postgres } from ".."
 import { eq, sql } from "drizzle-orm"
 
