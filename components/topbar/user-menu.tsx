@@ -13,9 +13,13 @@ export const UserMenu = () => {
     const [menuIsOpen, setMenuIsOpen] = useState(false)
     const { status, data } = useSession()
 
+    const handleLinkClick = () => {
+        setMenuIsOpen(false)
+    }
+
     const unauthMenu = (
         <>
-            <li><Link href="/auth/login" className="font-medium">Entrar</Link></li>
+            <li><Link href="/auth/login" onClick={handleLinkClick} className="font-medium">Entrar</Link></li>
             <hr className="my-2 dark:border-gray-700" />
             <li>Ajuda</li>
         </>
@@ -27,7 +31,7 @@ export const UserMenu = () => {
             <li className="font-medium"><FaHeart />Favoritos</li>
             <hr className="my-2 dark:border-gray-700" />
             <li>Ajuda</li>
-            <li>Conta</li>
+            <li><Link href="/account/settings" onClick={handleLinkClick}>Conta</Link></li>
             <li className="text-red-500" onClick={() => signOut()}>Sair</li>
         </>
     )
