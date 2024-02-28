@@ -3,14 +3,20 @@ import { DetailedHTMLProps, ButtonHTMLAttributes } from "react"
 interface ButtonProps extends DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> {
     children?: React.ReactNode
     link?: boolean
+    color?: "primary" | "secondary" | "success"
 }
 
 export const Button = ({
     children,
     link = false,
+    color = "primary",
     className,
     ...props
 }: ButtonProps) => {
+
+    const isPrimary = color === "primary"
+    const isSecondary = color === "secondary"
+    const isSuccess = color === "success"
 
     if (link) {
         return (
@@ -18,15 +24,18 @@ export const Button = ({
                 className={`
                     transition-all
                     font-medium
-                    text-trinidad-500
                     px-4
                     py-2
                     rounded-3xl
-
+                    
                     hover:bg-gray-100
-
+                    
                     dark:hover:bg-gray-900
                     
+                    ${isPrimary && "text-scooter-300"}
+                    ${isSecondary && "text-trinidad-500"}
+                    ${isSuccess && "text-green-500"}
+
                     ${className}
                 `}
                 {...props}
@@ -43,17 +52,25 @@ export const Button = ({
                 px-3
                 py-2
                 rounded-3xl
-                font-medium
-
-                bg-scooter-300
-                text-scooter-950
-
-                hover:bg-scooter-200
-
-                active:bg-scooter-400
 
                 disabled:opacity-50
                 disabled:cursor-not-allowed
+
+                ${isPrimary && "bg-scooter-300"}
+                ${isPrimary && "text-scooter-950"}
+                ${isPrimary && "hover:bg-scooter-200"}
+                ${isPrimary && "active:bg-scooter-400"}
+
+                ${isSecondary && "bg-trinidad-500"}
+                ${isSecondary && "text-trinidad-950"}
+                ${isSecondary && "hover:bg-trinidad-400"}
+                ${isSecondary && "active:bg-trinidad-600"}
+
+                ${isSuccess && "bg-green-500"}
+                ${isSuccess && "text-green-950"}
+                ${isSuccess && "hover:bg-green-400"}
+                ${isSuccess && "active:bg-green-600"}
+
                 ${className}
             `}
             {...props}
