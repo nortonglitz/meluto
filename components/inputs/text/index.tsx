@@ -48,6 +48,7 @@ export const InputText = forwardRef<HTMLInputElement, InputTextProps>(({
                 <p
                     className="
                         text-sm
+                        mt-1
                         mx-4
                         text-red-500
                     "
