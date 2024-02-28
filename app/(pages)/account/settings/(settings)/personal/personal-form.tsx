@@ -3,13 +3,17 @@
 import { useSession } from "next-auth/react"
 import { DataDisplay } from "./data-display"
 import { FaTrashCan } from "react-icons/fa6"
+import { InputAvatar } from "@/components"
 
 export const PersonalForm = () => {
-    const { data } = useSession()
+    const { data, status } = useSession()
     return (
         <div className="animate-fade-in">
-            <div>
-                <img src={data?.user?.image || "#"} alt="profile image" className="rounded-full" />
+            <div className="flex justify-center mb-10">
+                <InputAvatar
+                    src={data?.user?.image}
+                    loading={status === "loading"}
+                />
             </div>
             <DataDisplay
                 title="Nome"
