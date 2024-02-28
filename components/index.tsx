@@ -4,6 +4,7 @@ export { Topbar } from "./topbar"
 
 export { Button } from "./button"
 export { InputText } from "./inputs/text"
+export { InputAvatar } from "./inputs/avatar"
 
 export { ListenerClickOutside } from "./listeners/click-outside"
 
