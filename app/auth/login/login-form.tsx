@@ -1,7 +1,7 @@
 "use client"
 
 import { InputText, Button, Logo } from "@/components"
-import { EmailSchema, useEmailSchema } from "@/validations/schemas/auth"
+import { EmailSchema, useEmailSchema } from "@/validations/schemas/fields"
 import { login } from "@/actions/login"
 import { SocialMediaButton } from "./social-media-button"
 import { useState } from "react"

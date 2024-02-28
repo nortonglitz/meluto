@@ -2,7 +2,7 @@
 
 import { InputText } from "@/components"
 import { ButtonFeedback } from "@/components"
-import { EmailSchema, useEmailSchema } from "@/validations/schemas/auth"
+import { EmailSchema, useEmailSchema } from "@/validations/schemas/fields"
 
 interface EmailFieldProps {
     initialValue: string

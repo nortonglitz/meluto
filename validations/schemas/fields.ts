@@ -13,4 +13,19 @@ export const useEmailSchema = (props?: UseFormProps<EmailSchema>) => {
         resolver: zodResolver(emailSchema),
         ...props
     })
-} 
+}
+
+export const phoneSchema = z.object({
+    phone: z.string()
+        .min(10, "Telefone precisa ter no mínimo 10 caracteres com DDD.")
+        .max(11, "Telefone precisa ter no máximo 11 caracteres com DDD.")
+})
+
+export type PhoneSchema = z.infer<typeof phoneSchema>
+
+export const usePhoneSchema = (props?: UseFormProps<PhoneSchema>) => {
+    return useForm<PhoneSchema>({
+        resolver: zodResolver(phoneSchema),
+        ...props
+    })
+}

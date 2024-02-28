@@ -1,6 +1,6 @@
 "use server"
 
-import { EmailSchema, emailSchema } from "@/validations/schemas/auth"
+import { EmailSchema, emailSchema } from "@/validations/schemas/fields"
 import { BuiltInProviderType } from "next-auth/providers"
 import { signIn } from "@/auth"
 import { isRedirectError } from "next/dist/client/components/redirect"
