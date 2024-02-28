@@ -1,9 +1,9 @@
 "use client"
 
-import { ChangeEventHandler, MouseEventHandler, useEffect, useState } from "react"
+import { ChangeEventHandler, useEffect, useState } from "react"
 import { FaUser } from "react-icons/fa"
 import { FaArrowUpFromBracket } from "react-icons/fa6"
-import { FeedbackButton } from "./feedback-button"
+import { ButtonFeedback } from "../../buttons/feedback"
 
 interface InputAvatarProps {
     src?: string | null
@@ -72,8 +72,8 @@ export const InputAvatar = ({
                         -left-12
                     "
                 >
-                    <FeedbackButton option="cancel" onClick={() => setAvatarImgURL("")} />
-                    <FeedbackButton option="confirm" onClick={() => onConfirm(avatarFile)} />
+                    <ButtonFeedback option="cancel" onClick={() => setAvatarImgURL("")} />
+                    <ButtonFeedback option="confirm" onClick={() => onConfirm(avatarFile)} />
                 </div>
             }
             <label htmlFor="avatar-input">

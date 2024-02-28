@@ -1,24 +1,33 @@
 import { ButtonHTMLAttributes, DetailedHTMLProps } from "react"
 import { FaCheck, FaX } from "react-icons/fa6"
 
-interface FeedbackButtonProps extends DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> {
+interface ButtonFeedbackProps extends DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> {
     option: "confirm" | "cancel"
 }
 
-export const FeedbackButton = ({
+export const ButtonFeedback = ({
     option,
+    className,
     ...props
-}: FeedbackButtonProps) => {
+}: ButtonFeedbackProps) => {
+
+    const isConfirm = option === "confirm"
+    const isCancel = option === "cancel"
+
     return (
         <button
-            className="
+            className={`
                 rounded-full
-                hover:bg-gray-900
                 p-3
                 border
                 border-dashed
                 border-gray-400
-            "
+
+                ${isConfirm && "hover:bg-green-200/20 dark:hover:bg-green-900/20"}
+                ${isCancel && "hover:bg-red-200/20 dark:hover:bg-red-900/20"}
+                
+                ${className}
+            `}
             {...props}
         >
             {option === "confirm" ?
