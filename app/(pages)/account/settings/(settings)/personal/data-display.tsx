@@ -3,21 +3,20 @@
 import { Description } from "@/components"
 import { useState } from "react"
 import { FaEdit } from "react-icons/fa"
+import { EmailField } from "./email-field"
 
 interface DataDisplayProps {
     title: string
     subtitle: string
     value: string
     lastEdit: string
-    editComponent: React.ReactNode
 }
 
 export const DataDisplay = ({
     title,
     subtitle,
     value,
-    lastEdit,
-    editComponent
+    lastEdit
 }: DataDisplayProps) => {
 
     const [showEditComponent, setShowEditComponent] = useState(false)
@@ -48,6 +47,8 @@ export const DataDisplay = ({
             <FaEdit className="ml-2" />
         </button>
     )
+
+    const editComponent = <EmailField initialValue={value} onCancel={() => setShowEditComponent(false)} />
 
     return (
         <div>

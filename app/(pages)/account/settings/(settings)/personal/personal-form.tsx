@@ -4,9 +4,12 @@ import { useSession } from "next-auth/react"
 import { DataDisplay } from "./data-display"
 import { FaTrashCan } from "react-icons/fa6"
 import { InputAvatar } from "@/components"
+import { EmailField } from "./email-field"
 
 export const PersonalForm = () => {
+
     const { data, status } = useSession()
+
     return (
         <div className="animate-fade-in">
             <div className="flex justify-center mb-10">
