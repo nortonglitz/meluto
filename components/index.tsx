@@ -2,7 +2,9 @@ export { Logo } from "./logo"
 
 export { Topbar } from "./topbar"
 
-export { Button } from "./button"
+export { Button } from "./buttons/button"
+export { ButtonFeedback } from "./buttons/feedback"
+
 export { InputText } from "./inputs/text"
 export { InputAvatar } from "./inputs/avatar"
 
