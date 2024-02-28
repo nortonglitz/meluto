@@ -1,19 +1,26 @@
 "use client"
 
-import { Button } from "@/components"
-import { ChangeEventHandler, useState } from "react"
+import { ChangeEventHandler, MouseEventHandler, useState } from "react"
 import { FaUser } from "react-icons/fa"
 import { FaArrowUpFromBracket } from "react-icons/fa6"
+import { FeedbackButton } from "./feedback-button"
 
 interface InputAvatarProps {
     src?: string | null
     loading?: boolean
+    onConfirm?: MouseEventHandler<HTMLButtonElement>
 }
 
 export const InputAvatar = ({
     src,
-    loading = false
+    loading = false,
+    onConfirm
 }: InputAvatarProps) => {
+
+    /* 
+        TODO: Create a way to use properly the function onConfirm
+    
+    */
 
     const [avatarImg, setAvatarImg] = useState("")
 
@@ -32,14 +39,16 @@ export const InputAvatar = ({
             {avatarImg &&
                 <div
                     className="
+                        flex
+                        justify-between
                         absolute
-                        left-full
                         bottom-0
+                        -right-12
+                        -left-12
                     "
                 >
-                    <Button color="success" link>
-                        Enviar
-                    </Button>
+                    <FeedbackButton option="cancel" onClick={() => setAvatarImg("")} />
+                    <FeedbackButton option="confirm" onClick={onConfirm} />
                 </div>
             }
             <label htmlFor="avatar-input">
