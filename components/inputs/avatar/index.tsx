@@ -1,6 +1,6 @@
 "use client"
 
-import { ChangeEventHandler, MouseEventHandler, useState } from "react"
+import { ChangeEventHandler, MouseEventHandler, useEffect, useState } from "react"
 import { FaUser } from "react-icons/fa"
 import { FaArrowUpFromBracket } from "react-icons/fa6"
 import { FeedbackButton } from "./feedback-button"
@@ -24,14 +24,36 @@ export const InputAvatar = ({
 
     const [avatarImg, setAvatarImg] = useState("")
 
+    /* 
+        Have to remove this unique object URL on unmount
+        More: https://developer.mozilla.org/en-US/docs/Web/API/File_API/Using_files_from_web_applications#using_object_urls
+    */
+
+    useEffect(() => {
+        return () => URL.revokeObjectURL(avatarImg)
+    })
+
     /*
-        Function made to get the file and transform into a blob to display to the user
+        Function made to get the file and transform into a url to display to the user
     */
     const handleAvatarImgChange: ChangeEventHandler<HTMLInputElement> = e => {
+
+        if (avatarImg) {
+            URL.revokeObjectURL(avatarImg)
+        }
+
         if (e.target.files && e.target.files[0]) {
             const file = e.target.files[0]
             setAvatarImg(URL.createObjectURL(file))
         }
+
+        /* 
+            Do this to reset the value and let it be only on the avatarImg state,
+            because if you don't, the user can't see the same image twice if he clicks on cancel button,
+            because will be showing the picture of profile, but is stored the value of the picture canceled
+        */
+
+        e.target.value = ""
     }
 
     return (
