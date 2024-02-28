@@ -29,17 +29,19 @@ export const InputAvatar = ({
 
     return (
         <div className="flex select-none relative">
-            <div
-                className="
-                    absolute
-                    left-full
-                    bottom-0
-                "
-            >
-                <Button color="success" link>
-                    Aceitar
-                </Button>
-            </div>
+            {avatarImg &&
+                <div
+                    className="
+                        absolute
+                        left-full
+                        bottom-0
+                    "
+                >
+                    <Button color="success" link>
+                        Enviar
+                    </Button>
+                </div>
+            }
             <label htmlFor="avatar-input">
                 <input
                     type="file"
@@ -91,17 +93,19 @@ export const InputAvatar = ({
                     >
                         <FaArrowUpFromBracket className="h-12 w-12 dark:text-white/60 text-black/60" />
                     </div>
-                    {src ?
-                        <img src={avatarImg || src} alt="upload avatar" className="w-full h-full object-cover rounded-full" />
-                        :
-                        <FaUser
-                            className="
+                    {avatarImg ?
+                        <img src={avatarImg} alt="upload avatar" className="w-full h-full object-cover rounded-full" />
+                        : src ?
+                            <img src={src} alt="upload avatar" className="w-full h-full object-cover rounded-full" />
+                            :
+                            <FaUser
+                                className="
                                 h-16
                                 w-16
                                 dark:text-scooter-200
                                 text-scooter-900
                             "
-                        />
+                            />
 
                     }
                 </div>
