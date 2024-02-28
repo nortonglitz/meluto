@@ -77,7 +77,7 @@ export const LoginForm = () => {
             </Description>
             <form className="space-y-4" onSubmit={handleSubmit(onSubmit)}>
                 <InputText disabled={isLoading} placeholder="E-mail" className="w-full" {...register("email")} error={errors.email?.message} />
-                <Button disabled={isLoading} className="w-full" type="submit">Entrar</Button>
+                <Button disabled={isLoading} className="w-full font-medium" type="submit">Entrar</Button>
             </form>
             <div className="flex my-4 items-center text-xs">
                 <div className="flex-grow border-t border-gray-200"></div>
