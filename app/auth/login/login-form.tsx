@@ -1,9 +1,7 @@
 "use client"
 
 import { InputText, Button, Logo } from "@/components"
-import { useForm } from "react-hook-form"
-import { zodResolver } from "@hookform/resolvers/zod"
-import { LoginSchema, loginSchema } from "@/validations/schemas/auth"
+import { EmailSchema, useEmailSchema } from "@/validations/schemas/auth"
 import { login } from "@/actions/login"
 import { SocialMediaButton } from "./social-media-button"
 import { useState } from "react"
@@ -31,11 +29,9 @@ export const LoginForm = () => {
     const [emailSent, setEmailSent] = useState(false)
     const [isLoading, setIsLoading] = useState(false)
 
-    const { handleSubmit, register, formState: { errors } } = useForm<LoginSchema>({
-        resolver: zodResolver(loginSchema)
-    })
+    const { handleSubmit, register, formState: { errors } } = useEmailSchema()
 
-    const onSubmit = async (values: LoginSchema) => {
+    const onSubmit = async (values: EmailSchema) => {
         setIsLoading(true)
         const { status, message } = await login("resend", { email: values.email })
         if (status === "error") {

@@ -1,7 +1,15 @@
 import * as z from "zod"
+import { zodResolver } from "@hookform/resolvers/zod"
+import { useForm } from "react-hook-form"
 
-export const loginSchema = z.object({
+export const emailSchema = z.object({
     email: z.string().email("E-mail inválido")
 })
 
-export type LoginSchema = z.infer<typeof loginSchema>
+export type EmailSchema = z.infer<typeof emailSchema>
+
+export const useEmailSchema = () => {
+    return useForm<EmailSchema>({
+        resolver: zodResolver(emailSchema)
+    })
+} 
