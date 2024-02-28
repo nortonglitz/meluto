@@ -17,7 +17,7 @@ export const DataDisplay = ({
     return (
         <div>
             <h6 className="text-xl font-exo font-semibold">{title}</h6>
-            <p className="mb-2 text-sm">
+            <p className="mb-2">
                 {subtitle}
             </p>
             <button
@@ -43,7 +43,7 @@ export const DataDisplay = ({
                 {value}
                 <FaEdit className="ml-2" />
             </button>
-            <Description>
+            <Description className="text-sm">
                 <i>
                     Atualizado em {lastEdit}
                 </i>
