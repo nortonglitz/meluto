@@ -1,6 +1,6 @@
 "use server"
 
-import { LoginSchema, loginSchema } from "@/validations/schemas/auth"
+import { EmailSchema, emailSchema } from "@/validations/schemas/auth"
 import { BuiltInProviderType } from "next-auth/providers"
 import { signIn } from "@/auth"
 import { isRedirectError } from "next/dist/client/components/redirect"
@@ -10,10 +10,10 @@ type LoginReturnType = {
     message: string
 }
 
-export const login = async (provider: BuiltInProviderType, values: LoginSchema): Promise<LoginReturnType> => {
+export const login = async (provider: BuiltInProviderType, values: EmailSchema): Promise<LoginReturnType> => {
 
     try {
-        const validatedFields = await loginSchema.safeParseAsync(values)
+        const validatedFields = await emailSchema.safeParseAsync(values)
 
         /* CHECK IF EMAIL IS PRESENT AND CORRECT */
 
