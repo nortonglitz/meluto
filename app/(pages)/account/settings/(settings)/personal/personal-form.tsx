@@ -13,6 +13,7 @@ export const PersonalForm = () => {
                 <InputAvatar
                     src={data?.user?.image}
                     loading={status === "loading"}
+                    onConfirm={(file) => console.log(file)}
                 />
             </div>
             <DataDisplay

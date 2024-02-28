@@ -8,7 +8,7 @@ import { FeedbackButton } from "./feedback-button"
 interface InputAvatarProps {
     src?: string | null
     loading?: boolean
-    onConfirm?: MouseEventHandler<HTMLButtonElement>
+    onConfirm: (file: File | null) => void
 }
 
 export const InputAvatar = ({
@@ -22,7 +22,8 @@ export const InputAvatar = ({
     
     */
 
-    const [avatarImg, setAvatarImg] = useState("")
+    const [avatarImgURL, setAvatarImgURL] = useState("")
+    const [avatarFile, setAvatarFile] = useState<File | null>(null)
 
     /* 
         Have to remove unnecessary url after upload a new image,
@@ -32,11 +33,11 @@ export const InputAvatar = ({
     useEffect(() => {
         // Happens before avatarImg change
         return () => {
-            if (avatarImg) {
-                URL.revokeObjectURL(avatarImg)
+            if (avatarImgURL) {
+                URL.revokeObjectURL(avatarImgURL)
             }
         }
-    }, [avatarImg])
+    }, [avatarImgURL])
 
     /*
         Function made to get the file and transform into a url to display to the user
@@ -45,7 +46,8 @@ export const InputAvatar = ({
 
         if (e.target.files && e.target.files[0]) {
             const file = e.target.files[0]
-            setAvatarImg(URL.createObjectURL(file))
+            setAvatarFile(file)
+            setAvatarImgURL(URL.createObjectURL(file))
         }
 
         /* 
@@ -59,7 +61,7 @@ export const InputAvatar = ({
 
     return (
         <div className="flex select-none relative">
-            {avatarImg &&
+            {avatarImgURL &&
                 <div
                     className="
                         flex
@@ -70,8 +72,8 @@ export const InputAvatar = ({
                         -left-12
                     "
                 >
-                    <FeedbackButton option="cancel" onClick={() => setAvatarImg("")} />
-                    <FeedbackButton option="confirm" onClick={onConfirm} />
+                    <FeedbackButton option="cancel" onClick={() => setAvatarImgURL("")} />
+                    <FeedbackButton option="confirm" onClick={() => onConfirm(avatarFile)} />
                 </div>
             }
             <label htmlFor="avatar-input">
@@ -125,18 +127,18 @@ export const InputAvatar = ({
                     >
                         <FaArrowUpFromBracket className="h-12 w-12 dark:text-white/60 text-black/60" />
                     </div>
-                    {avatarImg ?
-                        <img src={avatarImg} alt="upload avatar" className="w-full h-full object-cover rounded-full" />
+                    {avatarImgURL ?
+                        <img src={avatarImgURL} alt="upload avatar" className="w-full h-full object-cover rounded-full" />
                         : src ?
                             <img src={src} alt="upload avatar" className="w-full h-full object-cover rounded-full" />
                             :
                             <FaUser
                                 className="
-                                h-16
-                                w-16
-                                dark:text-scooter-200
-                                text-scooter-900
-                            "
+                                    h-16
+                                    w-16
+                                    dark:text-scooter-200
+                                    text-scooter-900
+                                "
                             />
 
                     }
