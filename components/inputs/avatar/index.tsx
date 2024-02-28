@@ -25,22 +25,23 @@ export const InputAvatar = ({
     const [avatarImg, setAvatarImg] = useState("")
 
     /* 
-        Have to remove this unique object URL on unmount
+        Have to remove unnecessary url after upload a new image,
         More: https://developer.mozilla.org/en-US/docs/Web/API/File_API/Using_files_from_web_applications#using_object_urls
     */
 
     useEffect(() => {
-        return () => URL.revokeObjectURL(avatarImg)
-    })
+        // Happens before avatarImg change
+        return () => {
+            if (avatarImg) {
+                URL.revokeObjectURL(avatarImg)
+            }
+        }
+    }, [avatarImg])
 
     /*
         Function made to get the file and transform into a url to display to the user
     */
     const handleAvatarImgChange: ChangeEventHandler<HTMLInputElement> = e => {
-
-        if (avatarImg) {
-            URL.revokeObjectURL(avatarImg)
-        }
 
         if (e.target.files && e.target.files[0]) {
             const file = e.target.files[0]
