@@ -43,7 +43,7 @@ export const DataDisplay = ({
                 {value}
                 <FaEdit className="ml-2" />
             </button>
-            <Description className="text-sm">
+            <Description>
                 <i>
                     Atualizado em {lastEdit}
                 </i>
