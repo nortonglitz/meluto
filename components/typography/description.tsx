@@ -8,7 +8,7 @@ export const Description = ({
 }: DescriptionProps) => {
     return (
         <p
-            className={`text-gray-500 dark:text-gray-400 ${className}`}
+            className={`text-gray-500 dark:text-gray-400 ${className ? className : ""}`}
             {...props}
         >
         </p>

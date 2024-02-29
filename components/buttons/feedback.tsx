@@ -23,10 +23,10 @@ export const ButtonFeedback = ({
                 border-dashed
                 border-gray-400
 
-                ${isConfirm && "hover:bg-green-200/20 dark:hover:bg-green-900/20"}
-                ${isCancel && "hover:bg-red-200/20 dark:hover:bg-red-900/20"}
+                ${isConfirm ? "hover:bg-green-200/20 dark:hover:bg-green-900/20" : ""}
+                ${isCancel ? "hover:bg-red-200/20 dark:hover:bg-red-900/20" : ""}
                 
-                ${className}
+                ${className ? className : ""}
             `}
             {...props}
         >

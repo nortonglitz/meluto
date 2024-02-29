@@ -32,11 +32,11 @@ export const Button = ({
                     
                     dark:hover:bg-gray-900
                     
-                    ${isPrimary && "text-scooter-300"}
-                    ${isSecondary && "text-trinidad-500"}
-                    ${isSuccess && "text-green-500"}
+                    ${isPrimary ? "text-scooter-300" : ""}
+                    ${isSecondary ? "text-trinidad-500" : ""}
+                    ${isSuccess ? "text-green-500" : ""}
 
-                    ${className}
+                    ${className ? className : ""}
                 `}
                 {...props}
             >
@@ -56,20 +56,20 @@ export const Button = ({
                 disabled:opacity-50
                 disabled:cursor-not-allowed
 
-                ${isPrimary && "bg-scooter-300"}
-                ${isPrimary && "text-scooter-950"}
-                ${isPrimary && "hover:bg-scooter-200"}
-                ${isPrimary && "active:bg-scooter-400"}
+                ${isPrimary ? "bg-scooter-300" : ""}
+                ${isPrimary ? "text-scooter-950" : ""}
+                ${isPrimary ? "hover:bg-scooter-200" : ""}
+                ${isPrimary ? "active:bg-scooter-400" : ""}
 
-                ${isSecondary && "bg-trinidad-500"}
-                ${isSecondary && "text-trinidad-950"}
-                ${isSecondary && "hover:bg-trinidad-400"}
-                ${isSecondary && "active:bg-trinidad-600"}
+                ${isSecondary ? "bg-trinidad-500" : ""}
+                ${isSecondary ? "text-trinidad-950" : ""}
+                ${isSecondary ? "hover:bg-trinidad-400" : ""}
+                ${isSecondary ? "active:bg-trinidad-600" : ""}
 
-                ${isSuccess && "bg-green-500"}
-                ${isSuccess && "text-green-950"}
-                ${isSuccess && "hover:bg-green-400"}
-                ${isSuccess && "active:bg-green-600"}
+                ${isSuccess ? "bg-green-500" : ""}
+                ${isSuccess ? "text-green-950" : ""}
+                ${isSuccess ? "hover:bg-green-400" : ""}
+                ${isSuccess ? "active:bg-green-600" : ""}
 
                 ${className}
             `}

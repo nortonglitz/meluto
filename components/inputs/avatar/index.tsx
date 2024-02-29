@@ -86,7 +86,7 @@ export const InputAvatar = ({
                 />
                 <div
                     className={`
-                        ${loading && "animate-pulse"}
+                        ${loading ? "animate-pulse" : ""}
 
                         flex
                         items-center

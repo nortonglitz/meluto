@@ -30,14 +30,14 @@ export const Avatar = ({
 
                 bg-gray-200
 
-                ${loading && "animate-pulse"}
+                ${loading ? "animate-pulse" : ""}
             `}
         >
             {src ?
                 <img
                     className={`
                         rounded-full
-                        ${loading && "animate-pulse"}
+                        ${loading ? "animate-pulse" : ""}
                     `}
                     src={src}
                     alt="profile image"
