@@ -2,6 +2,10 @@ import * as z from "zod"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm, UseFormProps } from "react-hook-form"
 
+/* 
+    E-MAIL
+*/
+
 export const emailSchema = z.object({
     email: z.string().email("E-mail inválido")
 })
@@ -15,10 +19,15 @@ export const useEmailSchema = (props?: UseFormProps<EmailSchema>) => {
     })
 }
 
+/* 
+    PHONE
+*/
+
 export const phoneSchema = z.object({
     phone: z.string()
-        .min(10, "Telefone precisa ter no mínimo 10 caracteres com DDD.")
-        .max(11, "Telefone precisa ter no máximo 11 caracteres com DDD.")
+        .regex(/^\d*$/, "Somente números.")
+        .min(10, "No mínimo 10 números com DDD.")
+        .max(11, "No máximo 11 números com DDD.")
 })
 
 export type PhoneSchema = z.infer<typeof phoneSchema>
@@ -26,6 +35,39 @@ export type PhoneSchema = z.infer<typeof phoneSchema>
 export const usePhoneSchema = (props?: UseFormProps<PhoneSchema>) => {
     return useForm<PhoneSchema>({
         resolver: zodResolver(phoneSchema),
+        ...props
+    })
+}
+
+/* 
+    NAME
+*/
+
+export const nameSchema = z.object({
+    fname: z.string()
+        .regex(/^[A-Za-zÀ-ÖØ-öø-ÿ-]+(?:['’][A-Za-zÀ-ÖØ-öø-ÿ]+)?(?: [A-Za-zÀ-ÖØ-öø-ÿ-]+(?:['’][A-Za-zÀ-ÖØ-öø-ÿ]+)?)?$/, "Utilize caracteres válidos.")
+        .min(3, "No mínimo 3 caracteres.")
+        .max(50, "No máximo 50 caracteres")
+        .trim(),
+
+    // Make this field accept empty string "", this way it can be either "" or undefined
+    // More info: https://zod.dev/?id=unions check "optional string validation"
+    lname: z.union([
+        z.string()
+            .regex(/^[A-Za-zÀ-ÖØ-öø-ÿ-]+(?:['’][A-Za-zÀ-ÖØ-öø-ÿ]+)?(?: [A-Za-zÀ-ÖØ-öø-ÿ-]+(?:['’][A-Za-zÀ-ÖØ-öø-ÿ]+)?)?$/, "Utilize caracteres válidos.")
+            .min(3, "No mínimo 3 caracteres.")
+            .max(50, "No máximo 50 caracteres")
+            .trim()
+            .optional(),
+        z.literal("")
+    ])
+})
+
+export type NameSchema = z.infer<typeof nameSchema>
+
+export const useNameSchema = (props?: UseFormProps<NameSchema>) => {
+    return useForm<NameSchema>({
+        resolver: zodResolver(nameSchema),
         ...props
     })
 }
