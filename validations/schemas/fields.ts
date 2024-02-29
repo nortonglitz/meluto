@@ -50,7 +50,7 @@ export const nameSchema = z.object({
         .max(50, "No máximo 50 caracteres")
         .trim(),
 
-    // Make this field accept empty string "", this way it can be either "" or undefined
+    // Make this field accept empty string "" and then convert it to undefined
     // More info: https://zod.dev/?id=unions check "optional string validation"
     lname: z.union([
         z.string()
@@ -59,7 +59,7 @@ export const nameSchema = z.object({
             .max(50, "No máximo 50 caracteres")
             .trim()
             .optional(),
-        z.literal("")
+        z.literal("").transform(() => undefined)
     ])
 })
 
