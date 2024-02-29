@@ -7,7 +7,11 @@ import { useForm, UseFormProps } from "react-hook-form"
 */
 
 export const emailSchema = z.object({
-    email: z.string().email("E-mail inválido")
+    email: z.string()
+        .email("E-mail inválido")
+        // Remove blank spaces and make it lowercase
+        .trim()
+        .transform(args => args.toLowerCase())
 })
 
 export type EmailSchema = z.infer<typeof emailSchema>
@@ -28,6 +32,7 @@ export const phoneSchema = z.object({
         .regex(/^\d*$/, "Somente números.")
         .min(10, "No mínimo 10 números com DDD.")
         .max(11, "No máximo 11 números com DDD.")
+        .trim()
 })
 
 export type PhoneSchema = z.infer<typeof phoneSchema>
