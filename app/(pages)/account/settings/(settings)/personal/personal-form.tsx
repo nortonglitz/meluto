@@ -4,7 +4,6 @@ import { useSession } from "next-auth/react"
 import { DataDisplay } from "./data-display"
 import { FaTrashCan } from "react-icons/fa6"
 import { InputAvatar } from "@/components"
-import { EmailField } from "./email-field"
 
 export const PersonalForm = () => {
 
@@ -21,22 +20,33 @@ export const PersonalForm = () => {
             </div>
             <DataDisplay
                 title="Nome"
+                field="name"
                 subtitle="Será a forma que outros usuários poderão se referenciar a você. A edição é limitada a uma vez a cada 90 dias."
-                value="Norton Glitz"
+                value={[data?.user?.name]}
                 lastEdit="01/01/2024"
             />
             <hr className="my-4 border-gray-400" />
             <DataDisplay
                 title="E-mail"
+                field="email"
                 subtitle="Iremos utiliza-lo para poder nos comunicar e para você ter acesso a sua conta. Utilize um e-mail que você tenha acesso."
-                value="norton.glitz@gmail.com"
+                value={[data?.user?.email]}
                 lastEdit="01/01/2024"
             />
             <hr className="my-4 border-gray-400" />
             <DataDisplay
                 title="Telefone"
-                subtitle="Será o meio que os compradores poderão entrar em contato, também como telefone principal de WhatsApp."
-                value="(14) 991 740 220"
+                field="phone"
+                subtitle="Será o meio que os compradores poderão entrar em contato por meio de ligação."
+                value={["14991740220"]}
+                lastEdit="01/01/2024"
+            />
+            <hr className="my-4 border-gray-400" />
+            <DataDisplay
+                title="WhatsApp"
+                field="whatsapp"
+                subtitle="Será o meio que os compradores poderão entrar em contato por meio do WhatsApp."
+                value={["14991740220"]}
                 lastEdit="01/01/2024"
             />
             <hr className="my-4 border-gray-400" />

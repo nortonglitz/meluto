@@ -2,28 +2,33 @@
 
 import { InputText } from "@/components"
 import { ButtonFeedback } from "@/components"
-import { EmailSchema, useEmailSchema } from "@/validations/schemas/fields"
+import { NameSchema, useNameSchema } from "@/validations/schemas/fields"
 import { Value } from "./data-display"
 
-interface EmailFieldProps {
-    initialValue: Value
+interface NameFieldProps {
+    initialValue?: Value[]
     onClose: () => void
 }
 
-export const EmailField = ({
+export const NameField = ({
     initialValue,
     onClose
-}: EmailFieldProps) => {
+}: NameFieldProps) => {
 
-    const { handleSubmit, register, formState: { errors } } = useEmailSchema({
+    const { handleSubmit, register, formState: { errors } } = useNameSchema({
         defaultValues: {
-            email: initialValue || ""
+            given_name: initialValue?.[0] || "",
+            family_name: initialValue?.[1] || ""
         }
     })
 
-    const onSubmit = (values: EmailSchema) => {
+    const onSubmit = (values: NameSchema) => {
         // If do not change values, close form
-        if (values.email === initialValue) {
+        if (
+            values.given_name === initialValue?.[0]
+            &&
+            values.family_name === initialValue?.[1]
+        ) {
             onClose()
         }
     }
@@ -43,11 +48,19 @@ export const EmailField = ({
             onSubmit={handleSubmit(onSubmit)}
         >
             <InputText
+                label="Nome"
+                autoComplete="given-name"
                 autoFocus
-                autoComplete="email"
-                className="w-full lowercase"
-                {...register("email")}
-                error={errors.email?.message}
+                className="w-full flex"
+                {...register("given_name")}
+                error={errors.given_name?.message}
+            />
+            <InputText
+                label="Sobrenome"
+                autoComplete="family-name"
+                className="w-full flex"
+                {...register("family_name")}
+                error={errors.family_name?.message}
             />
             <div
                 className="
@@ -55,10 +68,6 @@ export const EmailField = ({
                     w-full
                     justify-around
                     ml-2
-                    
-                    sm:absolute
-                    sm:left-full
-                    sm:justify-normal
                 "
             >
                 {/* Explicit use this as type button to prevent submit */}

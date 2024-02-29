@@ -2,30 +2,34 @@
 
 import { InputText } from "@/components"
 import { ButtonFeedback } from "@/components"
-import { EmailSchema, useEmailSchema } from "@/validations/schemas/fields"
+import { PhoneSchema, usePhoneSchema } from "@/validations/schemas/fields"
 import { Value } from "./data-display"
 
-interface EmailFieldProps {
+interface PhoneFieldProps {
     initialValue: Value
     onClose: () => void
+    type: "whatsapp" | "phone"
 }
 
-export const EmailField = ({
+export const PhoneField = ({
     initialValue,
-    onClose
-}: EmailFieldProps) => {
+    onClose,
+    type
+}: PhoneFieldProps) => {
 
-    const { handleSubmit, register, formState: { errors } } = useEmailSchema({
+    const { handleSubmit, register, formState: { errors } } = usePhoneSchema({
         defaultValues: {
-            email: initialValue || ""
+            phone: initialValue || ""
         }
     })
 
-    const onSubmit = (values: EmailSchema) => {
+    const onSubmit = (values: PhoneSchema) => {
         // If do not change values, close form
-        if (values.email === initialValue) {
+        if (values.phone === initialValue) {
             onClose()
         }
+
+        // TODO: Create action to save phone or whatsapp based on type param
     }
 
     return (
@@ -43,11 +47,12 @@ export const EmailField = ({
             onSubmit={handleSubmit(onSubmit)}
         >
             <InputText
+                type="tel"
+                autoComplete="tel-national"
                 autoFocus
-                autoComplete="email"
-                className="w-full lowercase"
-                {...register("email")}
-                error={errors.email?.message}
+                className="w-full"
+                {...register("phone")}
+                error={errors.phone?.message}
             />
             <div
                 className="

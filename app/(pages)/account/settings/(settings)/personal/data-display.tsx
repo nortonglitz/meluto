@@ -4,19 +4,26 @@ import { Description } from "@/components"
 import { useState } from "react"
 import { FaEdit } from "react-icons/fa"
 import { EmailField } from "./email-field"
+import { PhoneField } from "./phone-field"
+import { NameField } from "./name-field"
+import { formatPhone } from "@/utils/formatters/strings"
+
+export type Value = null | undefined | string
 
 interface DataDisplayProps {
     title: string
     subtitle: string
-    value: string
-    lastEdit: string
+    value?: Value[]
+    lastEdit: string,
+    field: "email" | "phone" | "name" | "whatsapp"
 }
 
 export const DataDisplay = ({
     title,
     subtitle,
     value,
-    lastEdit
+    lastEdit,
+    field
 }: DataDisplayProps) => {
 
     const [showEditComponent, setShowEditComponent] = useState(false)
@@ -43,12 +50,37 @@ export const DataDisplay = ({
                 dark:border-gray-500
             "
         >
-            {value}
+            {!value || !value[0] ?
+                <i className="text-gray-500 dark:text-gray-400">Não informado</i>
+                :
+                field === "phone" || field === "whatsapp" ?
+                    formatPhone(value[0])
+                    :
+                    value.join(" ")
+            }
             <FaEdit className="ml-2" />
         </button>
     )
 
-    const editComponent = <EmailField initialValue={value} onCancel={() => setShowEditComponent(false)} />
+    let editComponent = null
+
+    switch (field) {
+        case "phone":
+            editComponent = <PhoneField type="phone" initialValue={value?.[0]} onClose={() => setShowEditComponent(false)} />
+            break
+
+        case "email":
+            editComponent = <EmailField initialValue={value?.[0]} onClose={() => setShowEditComponent(false)} />
+            break
+
+        case "name":
+            editComponent = <NameField initialValue={value} onClose={() => setShowEditComponent(false)} />
+            break
+
+        case "whatsapp":
+            editComponent = <PhoneField type="whatsapp" initialValue={value?.[0]} onClose={() => setShowEditComponent(false)} />
+            break
+    }
 
     return (
         <div>
