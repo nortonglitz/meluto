@@ -49,7 +49,7 @@ export const usePhoneSchema = (props?: UseFormProps<PhoneSchema>) => {
 */
 
 export const nameSchema = z.object({
-    fname: z.string()
+    given_name: z.string()
         .regex(/^[A-Za-zÀ-ÖØ-öø-ÿ-]+(?:['’][A-Za-zÀ-ÖØ-öø-ÿ]+)?(?: [A-Za-zÀ-ÖØ-öø-ÿ-]+(?:['’][A-Za-zÀ-ÖØ-öø-ÿ]+)?)?$/, "Utilize caracteres válidos.")
         .min(3, "No mínimo 3 caracteres.")
         .max(50, "No máximo 50 caracteres")
@@ -57,7 +57,7 @@ export const nameSchema = z.object({
 
     // Make this field accept empty string "" and then convert it to undefined
     // More info: https://zod.dev/?id=unions check "optional string validation"
-    lname: z.union([
+    family_name: z.union([
         z.string()
             .regex(/^[A-Za-zÀ-ÖØ-öø-ÿ-]+(?:['’][A-Za-zÀ-ÖØ-öø-ÿ]+)?(?: [A-Za-zÀ-ÖØ-öø-ÿ-]+(?:['’][A-Za-zÀ-ÖØ-öø-ÿ]+)?)?$/, "Utilize caracteres válidos.")
             .min(3, "No mínimo 3 caracteres.")
