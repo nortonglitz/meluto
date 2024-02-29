@@ -28,13 +28,13 @@ export const InputText = forwardRef<HTMLInputElement, InputTextProps>(({
             {label &&
                 <label
                     className={`mx-4 font-exo ${labelClassName}`}
-                    htmlFor={id || "input-text"}
+                    htmlFor={id || label?.toLocaleLowerCase().split(" ").join("-")}
                 >
                     {label}
                 </label>
             }
             <input
-                id={id || "input-text"}
+                id={id || label?.toLocaleLowerCase().split(" ").join("-")}
                 ref={ref}
                 type="text"
                 className={`
