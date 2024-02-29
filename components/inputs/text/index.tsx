@@ -3,7 +3,9 @@ import { DetailedHTMLProps, InputHTMLAttributes, forwardRef } from "react"
 interface InputTextProps extends DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement> {
     error?: string
     wrapperClassName?: string
+    labelClassName?: string
     className?: string
+    label?: string
 }
 
 // fordwardRef first type is the main element and then the component type
@@ -12,7 +14,10 @@ interface InputTextProps extends DetailedHTMLProps<InputHTMLAttributes<HTMLInput
 export const InputText = forwardRef<HTMLInputElement, InputTextProps>(({
     className,
     wrapperClassName,
+    labelClassName,
     error,
+    id,
+    label,
     ...props
 }, ref) => {
 
@@ -20,7 +25,16 @@ export const InputText = forwardRef<HTMLInputElement, InputTextProps>(({
 
     return (
         <div className={wrapperClassName}>
+            {label &&
+                <label
+                    className={`mx-4 font-exo ${labelClassName}`}
+                    htmlFor={id || "input-text"}
+                >
+                    {label}
+                </label>
+            }
             <input
+                id={id || "input-text"}
                 ref={ref}
                 type="text"
                 className={`
