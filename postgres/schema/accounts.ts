@@ -12,8 +12,8 @@ import { AdapterAccount } from "@auth/core/adapters"
 export const accounts = pgTable(
     "account",
     {
-        created_at: timestamp("created_at").defaultNow().notNull(),
-        updated_at: timestamp("updated_at").defaultNow().notNull(),
+        created_at: timestamp("created_at").defaultNow(),
+        updated_at: timestamp("updated_at").defaultNow(),
         userId: text("userId")
             .notNull()
             .references(() => users.id, { onDelete: "cascade" }),

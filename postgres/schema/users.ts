@@ -5,8 +5,8 @@ import {
 } from "drizzle-orm/pg-core"
 
 export const users = pgTable("user", {
-    created_at: timestamp("created_at").defaultNow().notNull(),
-    updated_at: timestamp("updated_at").defaultNow().notNull(),
+    created_at: timestamp("created_at").defaultNow(),
+    updated_at: timestamp("updated_at").defaultNow(),
     id: text("id").notNull().primaryKey(),
     name: text("name"),
     given_name: text("given_name"),

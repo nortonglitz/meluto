@@ -14,7 +14,6 @@ export const {
     signOut
 } = NextAuth({
     adapter: DrizzleAdapter(postgres),
-    session: { strategy: "database" },
     providers: [
         Google({
             clientId: process.env.AUTH_GOOGLE_ID,
@@ -29,7 +28,8 @@ export const {
                     image: profile.picture,
                     role: profile.role ?? "user"
                 }
-            }
+            },
+            allowDangerousEmailAccountLinking: true
         }),
         // Nodemailer is not edge compatible, use http based email provider https://authjs.dev/guides/providers/email-http
         // Resend https://github.com/nextauthjs/next-auth/blob/main/packages/core/src/providers/resend.ts
