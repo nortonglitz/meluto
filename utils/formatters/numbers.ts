@@ -8,3 +8,7 @@ export const formatCurrency = (
 ) => {
     return Intl.NumberFormat("pt-BR", { style: "currency", currency: "BRL", ...options }).format(value)
 }
+
+export const formatSquareMeter = (value: number) => {
+    return `${Intl.NumberFormat("pt-BR", { minimumFractionDigits: 0 }).format(value)} m²`
+}
