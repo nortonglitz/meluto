@@ -89,7 +89,7 @@ export const UserMenu = () => {
                         sm:bottom-auto
                         sm:top-[calc(100%_+_0.5rem)]
                         sm:w-fit
-                        sm:rounded-b-xl
+                        sm:rounded-b-3xl
                         sm:min-w-44
                         sm:border-b
 
