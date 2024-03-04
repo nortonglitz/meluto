@@ -1,12 +1,13 @@
 "use client"
 
-import { ListenerClickOutside } from "@/components"
 import Link from "next/link"
 import { useState } from "react"
 import { useSession, signOut } from "next-auth/react"
 import { Avatar } from "./avatar"
 import { FaHeart } from "react-icons/fa"
 import { FaSignHanging } from "react-icons/fa6"
+import { useClickOutside } from "@/hooks"
+import { useRef } from "react"
 
 export const UserMenu = () => {
 
@@ -16,6 +17,9 @@ export const UserMenu = () => {
     const handleLinkClick = () => {
         setMenuIsOpen(false)
     }
+
+    const menuRef = useRef(null)
+    useClickOutside(() => setMenuIsOpen(false), menuRef)
 
     const unauthMenu = (
         <ul>
@@ -27,7 +31,7 @@ export const UserMenu = () => {
 
     const authMenu = (
         <ul>
-            <li className="font-medium"><FaSignHanging />Anúncios</li>
+            <Link href="/listings/properties"><li className="font-medium"><FaSignHanging />Anúncios</li></Link>
             <li className="font-medium"><FaHeart />Favoritos</li>
             <hr className="my-2 dark:border-gray-700" />
             <li>Ajuda</li>
@@ -58,73 +62,71 @@ export const UserMenu = () => {
                     backdrop-blur-sm
                 `}
             />
-            <ListenerClickOutside onClickOutside={() => setMenuIsOpen(false)}>
-                <div className="sm:relative rounded-full">
-                    <button className="rounded-full" onClick={() => setMenuIsOpen(!menuIsOpen)}>
-                        <Avatar
-                            loading={status === "loading"}
-                            src={data?.user?.image}
-                        />
-                    </button>
-                    <div
-                        className={`
-                            ${menuIsOpen ? "block" : "hidden"}
-                            border
-                            overflow-hidden
-                            shadow-md
+            <div className="sm:relative rounded-full" ref={menuRef}>
+                <button className="rounded-full" onClick={() => setMenuIsOpen(!menuIsOpen)}>
+                    <Avatar
+                        loading={status === "loading"}
+                        src={data?.user?.image}
+                    />
+                </button>
+                <div
+                    className={`
+                        ${menuIsOpen ? "block" : "hidden"}
+                        border
+                        overflow-hidden
+                        shadow-md
 
-                            fixed
-                            bottom-0
-                            right-1
-                            left-1
-                            rounded-t-xl
-                            border-b-0
+                        fixed
+                        bottom-0
+                        right-1
+                        left-1
+                        rounded-t-3xl
+                        border-b-0
 
-                            sm:absolute
-                            sm:right-0
-                            sm:left-auto
-                            sm:bottom-auto
-                            sm:top-[calc(100%_+_0.5rem)]
-                            sm:w-fit
-                            sm:rounded-b-xl
-                            sm:min-w-44
-                            sm:border-b
+                        sm:absolute
+                        sm:right-0
+                        sm:left-auto
+                        sm:bottom-auto
+                        sm:top-[calc(100%_+_0.5rem)]
+                        sm:w-fit
+                        sm:rounded-b-xl
+                        sm:min-w-44
+                        sm:border-b
 
-                            border-gray-200
-                            bg-gray-50
+                        border-gray-200
+                        bg-gray-50
 
-                            dark:border-gray-700
-                            dark:bg-gray-900
-                        `}
+                        dark:border-gray-700
+                        dark:bg-gray-900
+                    `}
+                >
+                    <nav
+                        className="
+                            text-nowrap
+
+                            [&_li]:px-4
+                            [&_li]:py-4
+                            [&_li]:cursor-pointer
+                            [&_li]:flex
+                            [&_li]:items-center
+                            [&_li>svg]:mr-2
+
+                            py-2
+                            text-xl
+
+                            sm:[&_li]:py-2
+                            sm:text-lg
+
+                            [&_li:hover]:bg-gray-100
+                            dark:[&_li:hover]:bg-gray-800
+                        "
                     >
-                        <nav
-                            className="
-                                text-nowrap
-
-                                [&_li]:px-4
-                                [&_li]:py-4
-                                [&_li]:cursor-pointer
-                                [&_li]:flex
-                                [&_li]:items-center
-                                [&_li>svg]:mr-2
-
-                                py-2
-                                text-xl
-
-                                sm:[&_li]:py-2
-                                sm:text-lg
-
-                                [&_li:hover]:bg-gray-100
-                                dark:[&_li:hover]:bg-gray-800
-                            "
-                        >
-                            {status === "unauthenticated" && unauthMenu}
-                            {status === "authenticated" && authMenu}
-                            {status === "loading" && skeleton}
-                        </nav>
-                    </div>
+                        {status === "unauthenticated" && unauthMenu}
+                        {status === "authenticated" && authMenu}
+                        {status === "loading" && skeleton}
+                    </nav>
                 </div>
-            </ListenerClickOutside>
+            </div>
         </>
     )
 }
