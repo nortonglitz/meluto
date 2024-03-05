@@ -1,13 +1,12 @@
 "use client"
 
 import Link from "next/link"
-import { useState } from "react"
+import { useState, useRef } from "react"
 import { useSession, signOut } from "next-auth/react"
 import { Avatar } from "./avatar"
 import { FaHeart } from "react-icons/fa"
 import { FaSignHanging } from "react-icons/fa6"
-import { useRef } from "react"
-import { useClickAway } from "react-use"
+import { useClickOutside } from "@/hooks"
 
 export const UserMenu = () => {
 
@@ -19,7 +18,7 @@ export const UserMenu = () => {
     }
 
     const menuRef = useRef(null)
-    useClickAway(menuRef, () => setMenuIsOpen(false))
+    useClickOutside(() => setMenuIsOpen(false), menuRef)
 
     const unauthMenu = (
         <ul>
