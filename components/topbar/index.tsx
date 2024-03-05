@@ -11,7 +11,7 @@ export const Topbar = () => {
 
     return (
         <>
-            <div
+            <nav
                 className={`
                 transition
                 fixed
@@ -42,7 +42,7 @@ export const Topbar = () => {
                     </Button>
                     <UserMenu />
                 </div>
-            </div>
+            </nav>
             <div className="h-[4.5rem]" />
         </>
     )
