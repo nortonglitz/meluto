@@ -6,8 +6,8 @@ import { useSession, signOut } from "next-auth/react"
 import { Avatar } from "./avatar"
 import { FaHeart } from "react-icons/fa"
 import { FaSignHanging } from "react-icons/fa6"
-import { useClickOutside } from "@/hooks"
 import { useRef } from "react"
+import { useClickAway } from "react-use"
 
 export const UserMenu = () => {
 
@@ -19,7 +19,7 @@ export const UserMenu = () => {
     }
 
     const menuRef = useRef(null)
-    useClickOutside(() => setMenuIsOpen(false), menuRef)
+    useClickAway(menuRef, () => setMenuIsOpen(false))
 
     const unauthMenu = (
         <ul>
