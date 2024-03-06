@@ -1,17 +1,23 @@
+"use client"
+
+import { useSession } from "next-auth/react"
+import { DetailedHTMLProps, HTMLAttributes } from "react"
 import { FaUser } from "react-icons/fa"
 
-interface AvatarProps {
-    src: string | null | undefined
-    loading?: boolean
-}
+interface ButtonAvatarProps extends DetailedHTMLProps<HTMLAttributes<HTMLButtonElement>, HTMLButtonElement> { }
 
-export const Avatar = ({
-    src,
-    loading = false
-}: AvatarProps) => {
+export const ButtonAvatar = ({
+    className,
+    ...props
+}: ButtonAvatarProps) => {
+
+    const { data, status } = useSession()
+
+    const isLoading = status === "loading"
+    const src = data?.user?.image
 
     return (
-        <div
+        <button
             className={`
                 transition-all
                 h-11
@@ -30,14 +36,16 @@ export const Avatar = ({
 
                 bg-gray-200
 
-                ${loading ? "animate-pulse" : ""}
+                ${isLoading ? "animate-pulse" : ""}
+                ${className}
             `}
+            {...props}
         >
             {src ?
                 <img
                     className={`
                         rounded-full
-                        ${loading ? "animate-pulse" : ""}
+                        ${isLoading ? "animate-pulse" : ""}
                     `}
                     src={src}
                     alt="profile image"
@@ -52,6 +60,6 @@ export const Avatar = ({
                     "
                 />
             }
-        </div>
+        </button>
     )
 }
