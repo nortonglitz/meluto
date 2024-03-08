@@ -8,12 +8,12 @@ import { useEffect, useState } from "react"
  * 
  * @example
  * 
- * const hideElementOnScrollDown = useHideOnScroll("down")
+ * const hideElementOnScrollDown = useOnWindowScroll("down")
  * 
- * <div style={`${hideOnScrollDown} ? "hidden" : "block"`}/>
+ * <div style={`${hideElementOnScrollDown} ? "hidden" : "block"`}/>
  */
 
-export function useHideOnWindowScroll(direction: "down" | "up") {
+export function useOnWindowScroll(direction: "down" | "up") {
     const [prevScrollY, setPrevScrollY] = useState(0)
     const [show, setShow] = useState(false)
 

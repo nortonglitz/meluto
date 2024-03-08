@@ -1,2 +1,2 @@
-export { useHideOnWindowScroll } from "./useHideOnWindowScroll"
+export { useOnWindowScroll } from "./useOnWindowScroll"
 export { useClickOutside } from "./useClickOutside"
