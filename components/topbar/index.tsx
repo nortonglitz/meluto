@@ -3,11 +3,11 @@
 import { Logo, Button } from "@/components"
 import { UserMenu } from "./user-menu"
 import Link from "next/link"
-import { useHideOnWindowScroll } from "@/hooks"
+import { useOnWindowScroll } from "@/hooks"
 
 export const Topbar = () => {
 
-    const hideTopbar = useHideOnWindowScroll("down")
+    const hideTopbar = useOnWindowScroll("down")
 
     return (
         <>
@@ -16,7 +16,7 @@ export const Topbar = () => {
                 z-500
                 transition
                 fixed
-                ${hideTopbar ? "-translate-y-full" : ""}
+                ${hideTopbar ? "max-sm:-translate-y-full" : ""}
                 w-full
                 h-[4.5rem]
                 flex
