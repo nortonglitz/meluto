@@ -71,7 +71,7 @@ export const Button = ({
                 ${isSuccess ? "hover:bg-green-400" : ""}
                 ${isSuccess ? "active:bg-green-600" : ""}
 
-                ${className}
+                ${className ? className : ""}
             `}
             {...props}
         >
