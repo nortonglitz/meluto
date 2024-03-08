@@ -18,7 +18,7 @@ export const Topbar = () => {
                 fixed
                 ${hideTopbar ? "max-sm:-translate-y-full" : ""}
                 w-full
-                h-[4.5rem]
+                h-12
                 flex
                 justify-between
                 items-center

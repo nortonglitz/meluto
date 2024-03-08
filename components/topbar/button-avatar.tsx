@@ -20,8 +20,8 @@ export const ButtonAvatar = ({
         <button
             className={`
                 transition-all
-                h-11
-                w-11
+                h-9
+                w-9
                 rounded-full
                 flex
                 justify-center
