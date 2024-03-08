@@ -13,6 +13,7 @@ export const Topbar = () => {
         <>
             <nav
                 className={`
+                z-500
                 transition
                 fixed
                 ${hideTopbar ? "-translate-y-full" : ""}
@@ -26,8 +27,9 @@ export const Topbar = () => {
                 md:px-10
                 px-5
                 top-0
-                bg-gray-950
-                shadow-md
+
+                dark:bg-gray-950
+                bg-white
             `}
             >
                 <Link href="/" className="hidden md:block">

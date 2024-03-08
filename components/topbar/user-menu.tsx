@@ -3,7 +3,7 @@
 import Link from "next/link"
 import { useState, useRef } from "react"
 import { useSession, signOut } from "next-auth/react"
-import { Avatar } from "./avatar"
+import { ButtonAvatar } from "./button-avatar"
 import { FaHeart } from "react-icons/fa"
 import { FaSignHanging } from "react-icons/fa6"
 import { useClickOutside } from "@/hooks"
@@ -11,7 +11,7 @@ import { useClickOutside } from "@/hooks"
 export const UserMenu = () => {
 
     const [menuIsOpen, setMenuIsOpen] = useState(false)
-    const { status, data } = useSession()
+    const { status } = useSession()
 
     const handleLinkClick = () => {
         setMenuIsOpen(false)
@@ -52,6 +52,8 @@ export const UserMenu = () => {
     return (
         <>
             <div
+                onWheel={() => setMenuIsOpen(false)}
+                onTouchStart={() => setMenuIsOpen(false)}
                 className={`
                     ${menuIsOpen ? "sm:hidden fixed" : "hidden"}
                     top-0
@@ -59,21 +61,18 @@ export const UserMenu = () => {
                     right-0
                     bottom-0
                     backdrop-blur-sm
+                    z-[599]
                 `}
             />
-            <div className="sm:relative rounded-full" ref={menuRef}>
-                <button className="rounded-full" onClick={() => setMenuIsOpen(!menuIsOpen)}>
-                    <Avatar
-                        loading={status === "loading"}
-                        src={data?.user?.image}
-                    />
-                </button>
+            <div className="sm:relative" ref={menuRef}>
+                <ButtonAvatar onClick={() => setMenuIsOpen(!menuIsOpen)} />
                 <div
                     className={`
                         ${menuIsOpen ? "block" : "hidden"}
                         border
                         overflow-hidden
                         shadow-md
+                        z-600
 
                         fixed
                         bottom-0
