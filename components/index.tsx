@@ -7,6 +7,7 @@ export { ButtonFeedback } from "./buttons/feedback"
 
 export { InputText } from "./inputs/text"
 export { InputAvatar } from "./inputs/avatar"
+export { InputSelectMultiple } from "./inputs/selects/multiple"
 
 export { Description } from "./typography/description"
 
