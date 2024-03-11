@@ -98,7 +98,7 @@ export const InputSelectMultiple = () => {
                     dark:bg-gray-900
                 `}
             >
-                <hr className="border-gray-300 dark:border-gray-600" />
+                <hr className="border-gray-200 dark:border-gray-700" />
                 <ul className="overflow-y-auto">
                     {options.map(({ value, label }, i) => (
                         <li key={`key-${value}-${i}`}>
