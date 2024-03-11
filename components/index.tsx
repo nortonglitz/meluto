@@ -4,6 +4,7 @@ export { Topbar } from "./topbar"
 
 export { Button } from "./buttons/button"
 export { ButtonFeedback } from "./buttons/feedback"
+export { ButtonChangeValue } from "./buttons/change-value"
 
 export { InputText } from "./inputs/text"
 export { InputAvatar } from "./inputs/avatar"
