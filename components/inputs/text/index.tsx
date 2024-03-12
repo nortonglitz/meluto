@@ -54,7 +54,7 @@ export const InputText = forwardRef<HTMLInputElement, InputTextProps>(({
                     ${hasError ? "border-red-500" : ""}
                     ${hasError ? "outline-red-500" : ""}
 
-                    ${className}
+                    ${className ? className : ""}
                 `}
                 {...props}
             />
