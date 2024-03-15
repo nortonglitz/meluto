@@ -2,7 +2,7 @@ import Image from "next/image"
 import { FaShower, FaCar, FaBed } from "react-icons/fa6"
 import { formatCurrency, formatSquareMeter } from "@/utils/formatters/numbers"
 
-interface CardListingPropertyProps {
+export interface CardListingPropertyProps {
     rentMonthValue?: number
     rentMonthCosts?: number
     rentDayValue?: number
@@ -34,17 +34,18 @@ export const CardListingProperty = ({
         <div
             className="
                 overflow-hidden
-                border
                 flex
                 flex-col
+
+                sm:border
                 
                 bg-gray-100
                 hover:bg-gray-100
-                border-gray-200
+                sm:border-gray-200
                 
                 dark:bg-gray-900
-                dark:border-gray-700
                 dark:hover:bg-gray-900
+                sm:dark:border-gray-700
 
                 sm:w-72
                 sm:rounded-3xl
