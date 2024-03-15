@@ -23,14 +23,16 @@ export const Button = ({
         return (
             <button
                 className={`
-                    transition-all
                     font-medium
                     px-4
                     py-2
                     rounded-3xl
                     
-                    hover:bg-gray-400/10
-                    dark:hover:bg-gray-600/10
+                    hover:bg-black/5
+                    active:bg-black/10
+
+                    dark:hover:bg-white/10
+                    dark:active:bg-white/15
                     
                     ${isPrimary ? "text-scooter-300" : ""}
                     ${isSecondary ? "text-trinidad-500" : ""}
@@ -58,11 +60,11 @@ export const Button = ({
                     focus-visible:outline-2
                     dark:focus-visible:outline-white
                     
-                    hover:bg-gray-400/10
-                    active:bg-gray-400/20
+                    hover:bg-black/5
+                    active:bg-black/10
 
-                    dark:hover:bg-gray-400/20
-                    dark:active:bg-gray-400/30
+                    dark:hover:bg-white/10
+                    dark:active:bg-white/20
                     
                     
                     ${isPrimary ? "text-scooter-300" : ""}
