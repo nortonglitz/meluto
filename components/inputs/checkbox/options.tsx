@@ -59,11 +59,12 @@ export const InputCheckboxOptions = ({
             {options.map(({ value: valueOption, label: labelOption }, i) => {
 
                 const checked = selectedOptions.findIndex(valueChosen => valueChosen === valueOption) !== -1
+                const checkboxId = `checkbox-${generateRandomString(4)}-${i}`
 
                 return (
                     <label
-                        key={`checkbox-${generateRandomString(4)}-${valueOption}-${i}`}
-                        htmlFor={`checkbox-${generateRandomString(4)}-${valueOption}-${i}`}
+                        key={checkboxId}
+                        htmlFor={checkboxId}
                         className={`
                                 flex
                                 items-center
@@ -89,7 +90,7 @@ export const InputCheckboxOptions = ({
                         <input
                             className="cursor-pointer"
                             type="checkbox"
-                            id={`checkbox-${generateRandomString(4)}-${valueOption}-${i}`}
+                            id={checkboxId}
                             value={valueOption}
                             onChange={e => onChangeValue(e.target.value)}
                             checked={checked}

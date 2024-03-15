@@ -56,27 +56,51 @@ export const ButtonsOptions = ({
             {options.map(({ value: valueOption, label: labelOption }, i) => {
 
                 const selected = selectedOptions.findIndex(valueChosen => valueChosen === valueOption) !== -1
+                const buttonId = `button-${generateRandomString(4)}-${i}`
 
                 return (
                     <button
                         onClick={() => onChangeValue(valueOption)}
-                        key={`button-${generateRandomString(4)}-${valueOption}-${i}`}
+                        key={buttonId}
                         type="button"
                         className={`
                             px-4
                             py-2
                             rounded-full
                             outline
-                            
-                            ${selected ? "dark:text-gray-950 text-white" : "text-gray-500 dark:text-gray-400"}
-                            ${selected ? "dark:outline-white outline-black" : "outline-gray-500"}
-                            ${selected ? "dark:bg-white bg-black" : "bg-gray-100 dark:bg-gray-900"}
 
                             hover:-outline-offset-1
                             hover:outline-2
 
                             hover:outline-black
                             dark:hover:outline-white
+
+                            focus-visible:outline-2
+                            ${selected ?
+                                `
+                                text-white
+                                focus-visible:outline-scooter-300
+                                outline-black
+                                bg-black
+                            
+                                dark:text-gray-950
+                                dark:focus-visible:outline-scooter-300
+                                dark:outline-white
+                                dark:bg-white
+                                `
+                                :
+                                `
+                                outline-gray-500
+
+                                focus-visible:outline-black
+                                text-gray-500
+                                bg-gray-100
+                                
+                                dark:focus-visible:outline-white
+                                dark:text-gray-400
+                                dark:bg-gray-900
+                                `
+                            }
                             
                         `}
                     >
