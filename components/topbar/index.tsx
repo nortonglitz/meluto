@@ -13,24 +13,24 @@ export const Topbar = () => {
         <>
             <nav
                 className={`
-                z-500
-                transition
-                fixed
-                ${hideTopbar ? "max-sm:-translate-y-full" : ""}
-                w-full
-                h-12
-                flex
-                justify-between
-                items-center
-                py-2
-                lg:px-20
-                md:px-10
-                px-5
-                top-0
+                    z-500
+                    transition
+                    fixed
+                    ${hideTopbar ? "max-sm:-translate-y-full" : ""}
+                    w-full
+                    h-16
+                    flex
+                    justify-between
+                    items-center
+                    py-2
+                    lg:px-20
+                    md:px-10
+                    px-5
+                    top-0
 
-                dark:bg-gray-950
-                bg-white
-            `}
+                    dark:bg-gray-950
+                    bg-white
+                `}
             >
                 <Link href="/" className="hidden md:block">
                     <Logo className="h-7" />
