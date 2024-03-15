@@ -12,7 +12,7 @@ export const PlaceHolder = () => {
                 priority
             />
             <h2 className="font-exo text-xl italic mt-4 text-center">
-                Seus anúncios aparecerão aqui
+                Seus imóveis aparecerão aqui
             </h2>
         </div>
     )
