@@ -53,8 +53,8 @@ export const ButtonAvatar = ({
                 :
                 <FaUser
                     className="
-                        h-6
-                        w-6
+                        h-5
+                        w-5
                         dark:text-scooter-200
                         text-scooter-900
                     "
