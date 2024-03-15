@@ -3,7 +3,7 @@ import { DetailedHTMLProps, ButtonHTMLAttributes } from "react"
 interface ButtonProps extends DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> {
     children?: React.ReactNode
     link?: boolean
-    color?: "primary" | "secondary" | "success"
+    color?: "primary" | "secondary" | "success" | "neutral"
 }
 
 export const Button = ({
@@ -28,9 +28,8 @@ export const Button = ({
                     py-2
                     rounded-3xl
                     
-                    hover:bg-gray-100
-                    
-                    dark:hover:bg-gray-900
+                    hover:bg-gray-400/10
+                    dark:hover:bg-gray-600/10
                     
                     ${isPrimary ? "text-scooter-300" : ""}
                     ${isSecondary ? "text-trinidad-500" : ""}
