@@ -60,7 +60,7 @@ export const UserMenu = () => {
                     left-0
                     right-0
                     bottom-0
-                    backdrop-blur-sm
+                    bg-black/80
                     z-[599]
                 `}
             />
