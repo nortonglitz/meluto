@@ -69,22 +69,21 @@ export const ButtonsOptions = ({
                             rounded-full
                             outline
 
-                            hover:-outline-offset-1
-                            hover:outline-2
-
                             hover:outline-black
                             dark:hover:outline-white
 
                             focus-visible:outline-2
+                            hover:outline-2
+
                             ${selected ?
                                 `
-                                text-white
+                                hover:outline-offset-2
                                 focus-visible:outline-offset-2
+                                text-white
                                 outline-black
                                 bg-black
-                                hover:outline-offset-2
                             
-                                dark:text-gray-950
+                                dark:text-black
                                 dark:focus-visible:outline-white
                                 dark:outline-white
                                 dark:bg-white
