@@ -1,7 +1,7 @@
 import { generateRandomString } from "@/utils/generators/strings"
 
 type Option = {
-    label?: string
+    label?: React.ReactNode
     value: string | number
 }
 
@@ -79,12 +79,13 @@ export const ButtonsOptions = ({
                             ${selected ?
                                 `
                                 text-white
-                                focus-visible:outline-scooter-300
+                                focus-visible:outline-offset-2
                                 outline-black
                                 bg-black
+                                hover:outline-offset-2
                             
                                 dark:text-gray-950
-                                dark:focus-visible:outline-scooter-300
+                                dark:focus-visible:outline-white
                                 dark:outline-white
                                 dark:bg-white
                                 `
