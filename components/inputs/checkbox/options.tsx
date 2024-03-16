@@ -1,7 +1,7 @@
 import { generateRandomString } from "@/utils/generators/strings"
 
 type Option = {
-    label?: string
+    label?: React.ReactNode
     value: string | number
 }
 
@@ -74,7 +74,6 @@ export const InputCheckboxOptions = ({
                                 px-3
                                 py-1
                                 rounded-full
-                                text-nowrap
 
                                 dark:hover:bg-gray-800
                                 hover:bg-gray-200
@@ -83,6 +82,9 @@ export const InputCheckboxOptions = ({
                                 [&>input]:h-4
                                 [&>input]:w-4
                                 [&>input]:accent-scooter-300
+
+                                text-lg
+                                sm:text-base
 
                                 ${className ? className : ""}
                             `}
