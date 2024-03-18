@@ -30,7 +30,7 @@ export const UserMenu = () => {
 
     const authMenu = (
         <ul>
-            <Link href="/listings/properties"><li className="font-medium"><FaSignHanging />Anúncios</li></Link>
+            <Link href="/listings/properties/residential"><li className="font-medium"><FaSignHanging />Anúncios</li></Link>
             <li className="font-medium"><FaHeart />Favoritos</li>
             <hr className="my-2 dark:border-gray-700" />
             <li>Ajuda</li>
