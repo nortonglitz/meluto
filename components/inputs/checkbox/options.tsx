@@ -1,3 +1,5 @@
+"use client"
+
 import { generateRandomString } from "@/utils/generators/strings"
 
 type Option = {
@@ -59,7 +61,7 @@ export const InputCheckboxOptions = ({
             {options.map(({ value: valueOption, label: labelOption }, i) => {
 
                 const checked = selectedOptions.findIndex(valueChosen => valueChosen === valueOption) !== -1
-                const checkboxId = `checkbox-${generateRandomString(4)}-${i}`
+                const checkboxId = `checkbox-${valueOption}-${i}`
 
                 return (
                     <label
