@@ -24,7 +24,10 @@ export const InputText = forwardRef<HTMLInputElement, InputTextProps>(({
     const hasError = !!error
 
     return (
-        <div className={wrapperClassName}>
+        <div className={`
+            ${label ? "flex flex-col" : ""}
+            ${wrapperClassName ? wrapperClassName : ""}
+        `}>
             {label &&
                 <label
                     className={`mx-4 font-exo ${labelClassName}`}
