@@ -39,7 +39,7 @@ export const Topbar = () => {
                     <Logo small className="h-7" />
                 </Link>
                 <div className="flex items-center text-lg">
-                    <Button link className="mr-4" color="secondary">
+                    <Button variant="text" className="mr-4" color="secondary">
                         Anuncie seu imóvel
                     </Button>
                     <UserMenu />
