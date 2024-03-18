@@ -56,7 +56,7 @@ export const ButtonsOptions = ({
             {options.map(({ value: valueOption, label: labelOption }, i) => {
 
                 const selected = selectedOptions.findIndex(valueChosen => valueChosen === valueOption) !== -1
-                const buttonId = `button-${generateRandomString(4)}-${i}`
+                const buttonId = `button-${valueOption})}-${i}`
 
                 return (
                     <button
